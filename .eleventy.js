@@ -72,7 +72,7 @@ eleventyConfig.addCollection("concertsPast", api => {
 	);
 	
 	eleventyConfig.addPassthroughCopy({ "src/images": "images" });
-	
+	eleventyConfig.addPassthroughCopy({ "src/files": "files" });
 	return {
 		dir: {
 			input: "src",

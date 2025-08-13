@@ -3,109 +3,140 @@ title: Infos pratiques
 layout: layouts/base.njk
 ---
 
-
 <style>
 	@keyframes pulse-green {
-	0%, 100% {
-    box-shadow: 1 1 0 0 rgba(0, 255, 136, 0.7);
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,136,.55) }
+    50%      { box-shadow: 0 0 18px 2px rgba(0,255,136,.85) }
 	}
-	50% {
-    box-shadow: 0 0 0 0 rgba(100, 255, 136, 1);
-	}
-	}
-	
-	.animate-pulse-green {
-	animation: pulse-green 2s infinite;
-	}
+	.animate-pulse-green { animation: pulse-green 2.2s ease-in-out infinite; }
 </style>
 
-<!-- ========== SECTION RECRUTEMENT (HAUT) — version avec bande & encadré ========== -->
-<section class="border-b-2 border-white/50 bg-[radial-gradient(circle,_#3A7F6F,_#255147)] relative text-white py-12 px-4">
-	
-	
-	<div class="mt-10 relative max-w-6xl mx-auto">
+<!-- ========== SECTION RECRUTEMENT (HAUT) — bande + affiche + cartouches ========== -->
+<section class="border-b-2 border-white/10 bg-[radial-gradient(circle,_#3a7f6f_0%,_#255147_60%)] text-white py-12 px-4 relative">
+	<div class="max-w-6xl mx-auto mt-10 relative">
+		
 		<!-- Titre -->
-		<div class="flex relative justify-center mb-10">
-			<div class="inline-flex flex-col items-center gap-2 mb-8">
+		<div class="flex justify-center mb-10">
+			<div class="inline-flex flex-col items-center gap-2">
 				<span class="h-[3px] w-full bg-white/80"></span>
 				<h2 class="text-2xl md:text-3xl font-extrabold tracking-wide uppercase text-center px-4 py-1 bg-white/10 ring-1 ring-white/25">
-					Infos PRATIQUES
+					Infos pratiques
 				</h2>
 				<span class="h-[3px] w-full bg-white/80"></span>
 			</div>
-			<span class="hidden md:block absolute top-20 w-[100%] h-px bg-white/20"></span>
-			<span class="hidden md:block absolute top-[6rem] w-[50%] h-px bg-white/20"></span>
 		</div>
-		<!-- Grille : affiche (à gauche) + contenu (à droite) -->
-		<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start">
+		
+		<!-- Grille : affiche + contenu -->
+		<div class="grid grid-cols-1 md:grid-cols-11 gap-8 md:gap-12 items-start">
 			
-			<!-- Affiche recrutement : ratio 4:5 -->
-			<div class="md:col-span-4">
-				<div class="relative z-10 rounded-xl shadow-xl ring-1 ring-black/10 bg-white">
-					<!-- 4:5 => 125% -->
-					<div class="border-2 border-white relative w-full pt-[125%]">
-						<img
-						src="/images/recrutements.png"
-						alt="Affiche de recrutement"
-						class="absolute inset-0 w-full h-full object-cover"
-						/>
+			<!-- Affiche recrutement : ratio 4:5 --> <div class="md:col-span-4"> 
+				<div class="relative z-10 rounded-xl shadow-xl ring-1 ring-black/10 bg-white"> <!-- 4:5 => 125% --> 
+					
+					<div class="border-2 border-white relative w-full pt-[125%]"> 
+						<img src="/images/recrutements.png" alt="Affiche de recrutement" class="absolute inset-0 w-full h-full object-cover" /> 
 						<!-- Filets décoratifs gauche (option) -->
-						<span class="hidden md:block absolute -left-6 top-16 h-[60%] w-px bg-white/20"></span>
+						<span class="hidden md:block absolute -left-6 top-16 h-[60%] w-px bg-white/20"></span> 
 						<span class="hidden md:block absolute -left-10 top-28 h-[38%] w-px bg-white/10"></span>
-					</div>
+					</div> 
 				</div>
 			</div>
 			
-			<!-- Contenu recrutement -->
-			<div class="md:col-span-8 space-y-6">
+			<!-- Colonne texte + cartouches -->
+			<div class="md:col-span-7 space-y-8">
 				
-				<!-- Cartouche “Nous recrutons !” avec bordures élégantes animées -->
+				<!-- Cartouche “Nous recrutons !” (bordures vert fluo, sans lien) -->
 				<div class="relative flex justify-center">
-					<!-- petite “ficelle” + punaise -->
-					<span class="absolute -top-5 h-6 w-[2px] bg-[#ffffff]"></span>
+					<!-- ficelle + punaise -->
+					<span class="absolute -top-5 h-6 w-[2px] bg-white"></span>
 					<span class="absolute -top-6 inline-block h-3 w-3 rounded-full bg-[#c79b6a] shadow"></span>
 					
 					<div
-					class="md:w-1/2 flex items-center gap-3 px-4 py-2 rounded-md bg-[#255147] text-white
-					ring-2 ring-[#00ff88] outline outline-1 outline-[#ffffff] -outline-offset-4 shadow-lg animate-pulse-green">
-						<div class=" mx-auto"
-						<span class="font-extrabold tracking-wide uppercase">Nous recrutons&nbsp;!</span>
-						<a href="https://docs.google.com/forms/d/e/1FAIpQLSfthNcKGmQueayxr_IvuXYts8xkwXwUi4RTfkcbwHjqXxi4aA/viewform?usp=header"
-						class="ml-1 inline-flex items-center rounded px-3 py-1 text-sm font-bold bg-white text-[#255147] hover:bg-white/90 transition">
-							Questionnaire d’audition
-						</a>
+					class="md:w-2/3 text-center px-5 py-2 rounded-md bg-[#255147] text-white
+					ring-2 ring-[#00ff88] outline outline-1 outline-white -outline-offset-4
+					shadow-lg animate-pulse-green">
+						<span class="font-extrabold tracking-wide uppercase">Le choeur recrute dans tous les pupitres&nbsp;!</span>
 					</div>
 				</div>
-			</div>
-			
-			
-			
-			<!-- Bloc descriptif (fond vert + coins blancs opposés) -->
-			<div class="relative bg-[#183831] text-white ring-1 ring-white/20 shadow px-5 py-6 md:px-7 md:py-7">
-				<!-- coins opposés -->
-				<span class="pointer-events-none absolute -top-2 -right-2 h-[3px] w-20 bg-[#ffffff]"></span>
-				<span class="pointer-events-none absolute -top-2 -right-2 h-20 w-[3px] bg-[#ffffff]"></span>
-				<span class="pointer-events-none absolute -bottom-2 -left-2 h-[3px] w-20 bg-[#ffffff]"></span>
-				<span class="pointer-events-none absolute -bottom-2 -left-2 h-20 w-[3px] bg-[#ffffff]"></span>
 				
-				<h3 class="text-xl md:text-2xl font-extrabold mb-3">Programme du semestre</h3>
-				<div class="space-y-4 leading-relaxed text-[15.5px]">
-					<p>
-						Cette saison, le chœur explore un parcours autour de <strong>Franz Schubert</strong> — motets et pages chorales —
-						ponctué d’échos contemporains. Travail fin sur l’intonation, l’homogénéité du timbre et la souplesse de la ligne,
-						dans un effectif chambriste.
-					</p>
-					<p>
-						<span class="font-semibold">Tous pupitres bienvenus</span> (sélection sur audition). Lecture à vue appréciée,
-						mais la curiosité et l’envie de chanter ensemble primeront toujours.
-					</p>
+				<!-- Bloc descriptif (fond vert + coins blancs opposés) -->
+				<div class="relative bg-[#183831] ring-1 ring-white/15 shadow px-6 py-6 md:px-7 md:py-7">
+					<!-- coins décor -->
+					<span class="pointer-events-none absolute -top-2 -right-2 h-[3px] w-20 bg-white"></span>
+					<span class="pointer-events-none absolute -top-2 -right-2 h-20 w-[3px] bg-white"></span>
+					<span class="pointer-events-none absolute -bottom-2 -left-2 h-[3px] w-20 bg-white"></span>
+					<span class="pointer-events-none absolute -bottom-2 -left-2 h-20 w-[3px] bg-white"></span>
+					
+					<h3 class="text-xl md:text-2xl font-extrabold mb-3">Programme du semestre</h3>
+					<div class="space-y-4 leading-relaxed text-[15.5px]">
+						<p>
+							Cette saison, le chœur explore un parcours autour de <strong>Franz Schubert</strong> — motets et pages chorales —
+							ponctué d’échos contemporains. Travail fin sur l’intonation, l’homogénéité du timbre et la souplesse de la ligne,
+							dans un effectif chambriste.
+						</p>
+						<p>
+							<span class="font-semibold">Tous pupitres bienvenus</span> (sélection sur audition). Lecture à vue appréciée,
+							mais la curiosité et l’envie de chanter ensemble primeront toujours.
+						</p>
+					</div>
 				</div>
+				
+				<!-- ===== Cartouches type “Candidature / Œuvre imposée” ===== -->
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					
+					<!-- Candidature Schola -->
+					<div class="relative overflow-hidden rounded-xl ring-1 ring-white/15 bg-white/5 backdrop-blur-[1px]">
+						<div class="p-2 md:p-2 flex flex-col items-center text-center gap-1">
+							<!-- icône flèche -->
+							<svg viewBox="0 0 24 24" class="w-7 h-7 text-white/90">
+								<path fill="currentColor" d="M12 3v12.17l4.59-4.59L18 12l-6 6-6-6 1.41-1.41L11 15.17V3h1z"/>
+							</svg>
+							
+							<div class="space-y-1">
+								<div class="text-lg md:text-xl font-extrabold tracking-wide uppercase">Candidature Butterfly</div>
+								<div class="text-white/80">Formulaire d’inscription</div>
+							</div>
+							
+							<a href="https://docs.google.com/forms/d/e/1FAIpQLSfthNcKGmQueayxr_IvuXYts8xkwXwUi4RTfkcbwHjqXxi4aA/viewform?usp=header"
+							class="mt-2 inline-flex items-center justify-center px-6 py-2 rounded-full font-semibold
+							bg-[#c79b6a] text-[#0B1D3B] hover:bg-[#d2ab7f] transition shadow"
+							target="_blank" rel="noopener noreferrer">
+								Postuler
+							</a>
+						</div>
+					</div>
+					
+					<!-- Œuvre imposée -->
+					<div class="relative overflow-hidden rounded-xl ring-1 ring-white/15 bg-white/5 backdrop-blur-[1px]">
+						<div class="p-2 md:p-2 flex flex-col items-center text-center gap-1">
+							<!-- icône flèche -->
+							<svg viewBox="0 0 24 24" class="w-7 h-7 text-white/90">
+								<path fill="currentColor" d="M12 3v12.17l4.59-4.59L18 12l-6 6-6-6 1.41-1.41L11 15.17V3h1z"/>
+							</svg>
+							
+							<div class="space-y-1">
+								<div class="text-lg md:text-xl font-extrabold tracking-wide uppercase">Œuvres imposées</div>
+								<div class="text-white/80">Une œuvre au choix</div>
+							</div>
+							
+							<a href="/files/blank.pdf"
+							class="mt-2 inline-flex items-center justify-center px-6 py-2 rounded-full font-semibold
+							bg-[#c79b6a] text-[#0B1D3B] hover:bg-[#d2ab7f] transition shadow"
+							target="_blank" rel="noopener noreferrer">
+								Télécharger
+							</a>
+						</div>
+					</div>
+					
+				</div>
+				<!-- ===== fin cartouches ===== -->
+				
 			</div>
+			<!-- /colonne texte -->
 			
 		</div>
 	</div>
-</div>
 </section>
+
 
 
 

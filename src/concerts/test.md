@@ -1,7 +1,7 @@
 ---
 title: "A travers Schubert"
 subtitle: "Programme Schubert"
-image: "/images/concerts/renaissance.png"
+image: "/images/concerts/renaissance.jpg"
 excerpt: "Un voyage à travers la vie de Schubert et ses élans schubertien…"
 dates:
   - start: "2025-08-17T20:30:00"

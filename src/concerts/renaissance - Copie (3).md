@@ -8,7 +8,7 @@ dates:
     city: "Toulouse" 
 time: "20:30"
 city: "Toulouse"
-cover: "/images/concerts/renaissance.png"
+cover: "/images/concerts/renaissance.jpg"
 cta: { label: "Découvrir", url: "/concerts/chantons-jazz/" }
 layout: "layouts/concert.njk"    
 ---

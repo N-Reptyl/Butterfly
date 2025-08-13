@@ -13,6 +13,15 @@
     font-weight: bold;
 	}
 	
+	.nav-link-mobile{
+	padding:0.8rem;
+	}
+	
+	.nav-link-mobile.active {
+	font-weight: bold;
+	background-color: #3f937f;
+	}
+	
 	.nav-indicator {
     position: absolute;
     top: 0;
@@ -133,8 +142,8 @@
 		</div>
 		
 		<!-- Menu Mobile -->
-		<div id="mobileMenu" class="md:hidden fixed top-0 right-0 w-64 h-full bg-[#0B1D3B] text-white transform translate-x-full transition-transform duration-300 ease-in-out shadow-lg z-50">
-			<div class="flex justify-between items-center p-4 border-b border-blue-900">
+		<div id="mobileMenu" class="md:hidden fixed top-0 right-0 w-64 h-full bg-[#3a7f6f] text-white transform translate-x-full transition-transform duration-300 ease-in-out shadow-lg z-50">
+			<div class="flex justify-between items-center p-4 border-b border-[#255147]">
 				<h2 class="text-xl font-bold">Menu</h2>
 				<button id="closeMenu" class="focus:outline-none">
 					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,13 +152,13 @@
 					</svg>
 				</button>
 			</div>
-			<nav class="flex flex-col gap-4 p-4 text-sm uppercase font-semibold">
-				<a href="/le-choeur/" class="{{ "le-choeur" | isActive(page.fileSlug) }}">Le chœur</a>
-				<a href="/le-chef/" class="{{ "le-chef" | isActive(page.fileSlug) }}">Le chef</a>
-				<a href="/galerie/" class="{{ "galerie" | isActive(page.fileSlug) }}">Galerie</a>
-				<a href="/concerts/" class="{{ "concerts" | isActive(page.fileSlug) }}">Agenda</a>
-				<a href="/infos-pratiques/" class="{{ "infos-pratiques" | isActive(page.fileSlug) }}">Infos pratiques</a>
-				<a href="/nous-soutenir/" class="bg-blue-400 text-center py-2 rounded font-bold shadow hover:bg-blue-500">Nous soutenir</a>
+			<nav class="flex flex-col text-sm uppercase font-semibold">
+				<a href="/le-choeur/" class="nav-link-mobile {{ "le-choeur" | isActive(page.fileSlug) }}">Le chœur</a>
+				<a href="/le-chef/" class="nav-link-mobile {{ "le-chef" | isActive(page.fileSlug) }}">Le chef</a>
+				<a href="/galerie/" class="nav-link-mobile {{ "galerie" | isActive(page.fileSlug) }}">Galerie</a>
+				<a href="/concerts/" class="nav-link-mobile {{ "concerts" | isActive(page.fileSlug) }}">Agenda</a>
+				<a href="/infos-pratiques/" class="nav-link-mobile {{ "infos-pratiques" | isActive(page.fileSlug) }}">Infos pratiques</a>
+				<a href="/nous-soutenir/" class="mx-3 bg-[#255147] text-center py-2 rounded font-bold shadow hover:bg-[#477268]">Nous soutenir</a>
 			</nav>
 		</div>
 		

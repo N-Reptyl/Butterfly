@@ -1,0 +1,90 @@
+---
+title: Le Chœur
+layout: layouts/base.njk
+---
+
+<!-- LE CHOEUR DE CHAMBRE -->
+<section class="bg-[url(/images/fond.png)] bg-no-repeat bg-fixed bg-cover text-white py-10 px-4">
+  <div class="mt-10 max-w-6xl mx-auto">
+    <!-- Titre -->
+    <div class="flex justify-center">
+      <div class="inline-flex flex-col items-center gap-2 mb-8">
+        <span class="h-[3px] w-full mt-3 bg-white/80"></span>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-wide uppercase text-center px-4 py-1 bg-white/10 ring-1 ring-white/25">
+          Le chœur de chambre
+        </h2>
+        <span class="h-[3px] w-full bg-white/80"></span>
+      </div>
+    </div>
+
+    <!-- Grille overlap : image à droite, texte à gauche -->
+    <div class="grid grid-cols-1 md:grid-cols-12 md:items-center gap-8 md:gap-10">
+      <!-- Texte (à gauche) -->
+      <div class="md:col-start-1 md:col-span-5 md:row-start-1 relative z-10">
+        <div class="relative bg-[#fefefe]/90 text-[#183831] ring-1 ring-white/15 shadow-lg px-6 py-6 md:px-8 md:py-8">
+          <!-- angles -->
+          <span class="pointer-events-none absolute -top-2 -right-2 h-1 w-20 bg-white"></span>
+          <span class="pointer-events-none absolute -top-2 -right-2 h-20 w-1 bg-white"></span>
+          <span class="pointer-events-none absolute -bottom-2 -left-2 h-1 w-20 bg-white"></span>
+          <span class="pointer-events-none absolute -bottom-2 -left-2 h-20 w-1 bg-white"></span>
+
+          <div class="text-[15.5px] leading-relaxed text-justify space-y-4">
+            <p>L’ensemble vocal Butterfly est né d’une rencontre entre des chanteurs expérimentés et un chef passionné. En quelques mois seulement, se sont réunis 13 choristes, donnant ainsi naissance à un chœur de chambre qui se distingue par son énergie et sa cohésion.</p>
+            <p>Chaque semaine, ils se retrouvent pour unir leur voix avec enthousiasme sous la direction de leur chef Nathan Gardes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image (à droite), chevauchée -->
+      <figure class="md:col-start-5 md:col-span-8 md:row-start-1 relative">
+        <div class="rounded-xl overflow-hidden ring-1 ring-white/20 shadow-lg">
+          <img src="/images/choeur.jpg" alt="Le chœur de chambre Butterfly"
+               class="w-full h-[380px] md:h-[560px] object-cover" />
+        </div>
+
+        <!-- filets décoratifs (facultatif) -->
+        <span class="hidden md:block absolute -right-6 top-16 h-[60%] w-px bg-white/20"></span>
+        <span class="hidden md:block absolute -right-10 top-28 h-[38%] w-px bg-white/10"></span>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#f2f3f2] text-[#0B1D3B] py-14">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Titre -->
+    <div class="flex justify-center">
+      <div class="inline-flex flex-col items-center gap-2 mb-8">
+        <span class="h-[3px] w-full bg-[#0B1D3B]/20"></span>
+        <h2 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-4 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
+          Les choristes
+        </h2>
+        <span class="h-[3px] w-full bg-[#0B1D3B]/20"></span>
+      </div>
+    </div>
+
+    <!-- Grille -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      {% for c in collections.choristes %}
+      <div class="bg-white rounded-xl ring-1 ring-black/5 shadow-sm overflow-hidden">
+        <div class="aspect-[4/5] bg-[#e9eeec] flex items-center justify-center overflow-hidden">
+          {% if c.data.photo %}
+            <img src="{{ c.data.photo }}" alt="{{ c.data.name }}"
+                 class="w-full h-full object-cover" />
+          {% else %}
+            <!-- placeholder -->
+            <div class="w-full h-full grid place-items-center text-sm text-black/40">Photo</div>
+          {% endif %}
+        </div>
+        <div class="px-3 pt-3 pb-4 text-center">
+          <p class="font-semibold leading-tight">{{ c.data.name }}</p>
+          {% if c.data.voice %}
+            <!-- <p class="text-xs text-black/60 mt-1">{{ c.data.voice }}</p> -->
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+

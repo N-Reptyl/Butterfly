@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>{% if title %}{{ title }} – {% endif %}Chœur Butterfly</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+		<meta name="description" content="Chœur de chambre Butterfly, Toulouse. Concerts, direction artistique, soutien." />
+		<link rel="stylesheet" href="/assets/styles.css" />
+	</head>
+	<body class="bg-[#255147] text-white font-sans bg-cover bg-center">
+		{% include "../components/header.njk" %}
+		<main class="">
+			{{ content | safe }}
+		</main>
+		
+		
+		<footer class="relative bg-[#244D46] text-white">
+			<!-- Watermark optionnel -->
+			<div class="pointer-events-none absolute inset-0 opacity-[0.06]">
+				<!-- place ton logo géant, facultatif -->
+			</div>
+			
+			<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+				<!-- Col 1 : Présentation + réseaux -->
+				<div>
+					<a href="/" class="inline-flex items-center gap-3">
+						<img src="/images/logo.png" alt="" class="invert 	h-10 w-auto" />
+						<div class="leading-tight">
+							<p class="text-xs uppercase tracking-wider">Chœur de chambre</p>
+							<p class="text-xl font-extrabold tracking-[0.18em]">BUTTERFLY</p>
+						</div>
+					</a>
+					<p class="mt-4 text-sm text-white/80 max-w-xs">
+						Ensemble vocal toulousain.	
+					</p>
+					
+					<div class="mt-5 flex items-center gap-3" aria-label="Réseaux sociaux">
+						<!-- IG -->
+						<a href="https://instagram.com/choeur.butterfly" target="_blank" rel="noopener"
+						class="group inline-flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-white/30 hover:ring-white/60 transition">
+							<svg viewBox="0 0 24 24" class="h-5 w-5 text-white group-hover:text-white" fill="currentColor" aria-hidden="true">
+								<path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 .001 6.999A3.5 3.5 0 0 0 12 9.5zM18 6.2a1 1 0 1 1 0 2.001 1 1 0 0 1 0-2z"/>
+							</svg>
+							<span class="sr-only">Instagram</span>
+						</a>
+						<!-- FB -->
+						<a href="https://facebook.com/cheurbutterfly" target="_blank" rel="noopener"
+						class="group inline-flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-white/30 hover:ring-white/60 transition">
+							<svg viewBox="0 0 24 24" class="h-5 w-5 text-white" fill="currentColor" aria-hidden="true">
+								<path d="M22 12.06C22 6.55 17.52 2 12.09 2 6.65 2 2.17 6.55 2.17 12.06c0 5 3.66 9.14 8.44 9.94v-7.03H7.9V12.1h2.71V9.98c0-2.68 1.58-4.16 4-4.16 1.16 0 2.37.21 2.37.21v2.6h-1.33c-1.31 0-1.72.82-1.72 1.66v1.8h2.93l-.47 2.87h-2.46V22c4.78-.8 8.44-4.94 8.44-9.94z"/>
+							</svg>
+							<span class="sr-only">Facebook</span>
+						</a>
+						<!-- HelloAsso -->
+						<a href="https://www.helloasso.com/associations/familia-production" target="_blank" rel="noopener"
+						class="group inline-flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-white/30 hover:ring-white/60 transition">
+							<svg viewBox="0 0 995 1000" class="h-5 w-5 text-white" aria-hidden="true">
+								<path fill="currentColor" d="M298.48 803C145.24 627.95 247.48 185.43 312.48 185.43C187 182.85 -25 265.84 3.57998 561.9C34 803 234.91 992.62 483.74 999.8C602.45 1003.19 712.58 964.21 800.17 896.85C559.86 1069.85 397.08 915.6 298.48 803V803Z"/>
+								<path fill="currentColor" d="M859.58 505.57C732.51 761.53 342.83 869.32 298.48 803C374.64 914.38 563.59 1070.25 801.67 895.81C992 747.5 1052 477.81 932.3 259C875.15 154.58 786.4 78.78 684.64 37.1C953.75 157.44 926.48 370.81 859.58 505.57V505.57Z"/>
+								<path fill="currentColor" d="M312.5 185.38C587.38 155.67 899.11 439.48 859.58 505.57C937 373.35 954.78 157.44 685.72 37.07C551.68 -17.84 395.1 -13.6 258.51 62.2C73.25 165 -22.56 369.81 4.51999 569C-14.95 274.52 209.77 196.48 312.5 185.38Z"/>
+							</svg>
+							<span class="sr-only">HelloAsso</span>
+						</a>
+						
+					</div>
+				</div>
+				
+				<!-- Col 2 : Navigation -->
+				<div>
+					<h3 class="text-sm font-semibold uppercase tracking-wider text-white/80">Le chœur</h3>
+					<ul class="mt-3 space-y-2 text-sm">
+						<li><a class="hover:text-white/100 text-white/80" href="/le-choeur/">Présentation</a></li>
+						<li><a class="hover:text-white/100 text-white/80" href="/galerie/">Galerie</a></li>
+						<li><a class="hover:text-white/100 text-white/80" href="/concerts/">Concerts</a></li>
+					</ul>
+				</div>
+				
+				<!-- Col 3 : Soutien -->
+				<div>
+					<h3 class="text-sm font-semibold uppercase tracking-wider text-white/80">Soutenir</h3>
+					<ul class="mt-3 space-y-2 text-sm">
+						<li><a class="hover:text-white/100 text-white/80" href="/nous-soutenir/">Nous soutenir</a></li>
+					</ul>
+				</div>
+				
+				<!-- Col 4 : Contact + Newsletter -->
+				<div>
+					<h3 class="text-sm font-semibold uppercase tracking-wider text-white/80">Contact</h3>
+					<ul class="mt-3 space-y-2 text-sm text-white/80">
+						<li><a class="hover:text-white/100" href="mailto:contact@butterfly-choeur.fr">choeurbutterfly@gmail.com</a></li>
+						<li><a class="hover:text-white/100" href="https://maps.google.com/?q=Toulouse" target="_blank" rel="noopener">Toulouse · France</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- Bandeau bas -->
+			<div class="relative border-t border-white/10">
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/70">
+					<p>© {{ year }} Chœur Butterfly — Tous droits réservés.</p>
+					<ul class="flex items-center gap-4">
+						<li><a class="hover:text-white" href="/mentions-legales/">Mentions légales</a></li>
+						<li><a class="hover:text-white" href="/politique-confidentialite/">Confidentialité</a></li>
+						<li><a class="hover:text-white" href="/contact/">Contact</a></li>
+						<li><a class="hover:text-white" href="/accessibilite/">Accessibilité</a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		
+	</body>
+</html>

@@ -1,0 +1,182 @@
+---
+title: Le Chef
+layout: layouts/base.njk
+---
+<!-- SECTION CHEF -->
+<section class="bg-[url(/images/fond.png)] bg-no-repeat bg-fixed bg-cover text-white py-10 px-4">
+	<div class="max-w-6xl mt-10 mx-auto">
+		
+		<!-- Titre -->
+		<div class="flex justify-center">
+			<div class="inline-flex flex-col items-center gap-2 mb-8">
+				<span class="h-[3px] w-full mt-3 bg-white/80"></span>
+				<h2 class="text-2xl md:text-3xl font-extrabold tracking-wide uppercase text-center px-4 py-1 bg-white/10 ring-1 ring-white/25">
+					Notre directeur artistique
+				</h2>
+				<span class="h-[3px] w-full bg-white/80"></span>
+			</div>
+		</div>
+		
+		<!-- Grille : overlap sans marge négative -->
+		<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-center">
+			
+			<!-- Image -->
+			<figure class="md:col-start-1 md:col-span-7 md:row-start-1 relative">
+				<div class="rounded-xl overflow-hidden ring-1 ring-white/20 shadow-lg">
+					<img src="/images/chef.png" alt="Nathan Gardes, directeur artistique"
+					class="w-full h-[380px] md:h-[560px] object-cover" />
+				</div>
+				
+				<!-- Filets décoratifs gauche (option) -->
+				<span class="hidden md:block absolute -left-6 top-16 h-[60%] w-px bg-white/20"></span>
+				<span class="hidden md:block absolute -left-10 top-28 h-[38%] w-px bg-white/10"></span>
+			</figure>
+			
+			<!-- Texte -->
+			<div class="md:col-start-6 md:col-span-7 md:row-start-1 relative z-10">
+				<div class="relative bg-[#fefefe]/90 text-[#183831] ring-1 ring-white/15 shadow-lg px-6 py-6 md:px-8 md:py-8">
+					
+					<!-- Angle blanc haut-droit -->
+					<span class="pointer-events-none absolute -top-2 -right-2 h-1 w-20 bg-white"></span>
+					<span class="pointer-events-none absolute -top-2 -right-2 h-20 w-1 bg-white"></span>
+					
+					<!-- Angle blanc bas-gauche -->
+					<span class="pointer-events-none absolute -bottom-2 -left-2 h-1 w-20 bg-white"></span>
+					<span class="pointer-events-none absolute -bottom-2 -left-2 h-20 w-1 bg-white"></span>
+					
+					<div class="text-justify space-y-5 text-[15.5px] leading-relaxed">
+						<p>Pianiste de formation, Nathan Gardes témoigne également d’une grande appétence pour la musique vocale et chorale.</p>
+						<p>Depuis 2018, il prête sa voix successivement au Chœur Étudiant de Toulouse, à la Schola Cantorum de la Basilique Saint-Sernin, à la Maîtrise de Toulouse et encore d’autres ensembles. Pendant un an, il collabore avec le chœur de femmes Arpegia Vox en tant qu’accompagnateur.</p>
+						<p>En tant qu’instrumentiste, il étudie le piano auprès de François-Michel Rignol et l’accompagnement auprès d’Emilie Carcy au sein du Conservatoire à Rayonnement Régional de Perpignan. Il joue également dans le festival International de Piano En Blanc et Noir dans le village de Lagrasse. Il co-fonde un ensemble avec des chanteurs chanteurs lyriques de la région, Quadrivoces.</p>
+						<p>Parallèlement à un master de recherche en musicologie, il intègre la classe de direction de chœur du CRR de Toulouse, auprès de Rolandas Muleika.</p>
+						<p>Il dirige durant un an des chœurs d’enfants et d’adolescents puis devient le chef de chœur de l’ensemble vocal BUTTERFLY, récemment fondé en octobre 2024.</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</section>
+
+<!-- NOS MUSICIENS ASSOCIÉS -->
+<section class="bg-[#fefefe] text-[#0B1D3B] py-14">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <!-- Titre centré avec barres -->
+    <div class="flex justify-center">
+      <div class="inline-flex flex-col items-center gap-2 mb-8">
+        <span class="h-[3px] w-full bg-[#0B1D3B]/20"></span>
+        <h2 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-4 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
+          Nos musiciens associés
+        </h2>
+        <span class="h-[3px] w-full bg-[#0B1D3B]/20"></span>
+      </div>
+    </div>
+
+    <!-- Carousel -->
+    <div id="assocCarousel" class="relative">
+      <div class="overflow-hidden rounded-lg ring-1 ring-black/5 bg-[#fefefe]">
+        <div id="assocTrack" class="flex transition-transform duration-700 ease-in-out">
+          {% for a in collections.associes %}
+          <!-- Slide -->
+          <article class="w-full shrink-0">
+            <!-- Grille: chevauchement sans marges négatives -->
+            <div class="grid grid-cols-1 md:grid-cols-12 md:items-center gap-6 md:gap-10 min-h-[460px] md:min-h-[480px] p-4 md:p-8">
+
+              <!-- Texte (à gauche) : commence colonne 1, chevauche l'image -->
+              <div class="text-justify md:row-start-1 md:col-start-1 md:col-span-7 relative z-10">
+                <div class="relative bg-[#183831] text-white shadow-lg px-6 py-6 md:px-8 md:py-8">
+                  <!-- angles blancs -->
+                  <span class="pointer-events-none absolute -top-2 -right-2 h-[4px] w-24 bg-[#418a7a]"></span>
+                  <span class="pointer-events-none absolute -top-2 -right-2 h-24 w-[4px] bg-[#418a7a]"></span>
+                  <span class="pointer-events-none absolute -bottom-2 -left-2 h-[4px] w-24 bg-[#418a7a]"></span>
+                  <span class="pointer-events-none absolute -bottom-2 -left-2 h-24 w-[4px] bg-[#418a7a]"></span>
+
+                  <h3 class="text-2xl md:text-3xl font-extrabold mb-3">{{ a.data.name }}</h3>
+                  <div class="prose prose-invert max-w-none text-[15.5px] leading-relaxed">
+                    {{ a.templateContent | safe }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Image (à droite) : commence en 7, chevauchée par le texte -->
+              <div class="md:row-start-1 md:col-start-7 md:col-span-6 relative">
+                <div class="rounded-xl overflow-hidden ring-1 ring-black/10 shadow">
+                  <img src="{{ a.data.image }}" alt="{{ a.data.name }}"
+                       class="w-full h-[320px] md:h-[460px] object-cover" />
+                </div>
+              </div>
+
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Flèche gauche -->
+      <button id="assocPrev"
+        class="z-10 absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white
+               rounded-md p-2 text-[#0B1D3B] shadow ring-1 ring-black/10">
+        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <!-- Flèche droite -->
+      <button id="assocNext"
+        class="z-10 absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white
+               rounded-md p-2 text-[#0B1D3B] shadow ring-1 ring-black/10">
+        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <!-- Dots -->
+      <div class="flex justify-center gap-2 mt-4">
+        {% for a in collections.associes %}
+        <button class="assoc-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#0B1D3B]/30 ring-1 ring-[#0B1D3B]/30"></button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- JS du carrousel -->
+  <script>
+    (function () {
+      const track = document.getElementById('assocTrack');
+      const slides = Array.from(track.children);
+      const prev = document.getElementById('assocPrev');
+      const next = document.getElementById('assocNext');
+      const dots = Array.from(document.querySelectorAll('.assoc-dot'));
+      let index = 0, total = slides.length;
+
+      function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((d,i) => d.classList.toggle('bg-[#0B1D3B]', i === index));
+        dots.forEach((d,i) => d.classList.toggle('bg-[#0B1D3B]/30', i !== index));
+      }
+      function go(n){ index = (n + total) % total; update(); }
+
+      prev.addEventListener('click', () => go(index - 1));
+      next.addEventListener('click', () => go(index + 1));
+      dots.forEach((d,i)=> d.addEventListener('click', ()=> go(i)));
+
+      // Swipe mobile
+      let startX = 0;
+      track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
+      track.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
+      }, {passive:true});
+
+      // Clavier
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') go(index + 1);
+        if (e.key === 'ArrowLeft') go(index - 1);
+      });
+
+      update();
+    })();
+  </script>
+</section>
+

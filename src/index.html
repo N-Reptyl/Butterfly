@@ -1,0 +1,124 @@
+---
+title: Accueil
+layout: layouts/base.njk
+---
+
+<!-- CAROUSEL -->
+<section class="relative w-full h-[420px] md:h-[560px] lg:h-[620px] overflow-hidden">
+  <!-- Slides wrapper -->
+  <div id="heroSlides" class="flex w-full h-full transition-transform duration-700 ease-in-out">
+    <!-- Slide 1 -->
+    <div class="slide relative w-full h-full flex-shrink-0">
+      <img src="/images/slide1.png" alt="Butterfly - photo 1"
+           class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/45"></div>
+      <div class="absolute inset-0 max-w-6xl mx-auto px-4 flex flex-col justify-center">
+        <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-4">BUTTERFLY</h2>
+        <p class="text-white/90 text-sm md:text-base max-w-xl mb-6">
+          Chœur de chambre.
+        </p>
+        <a href="/le-choeur/" class="w-fit inline-block bg-[#255147] hover:bg-[#255147] text-white font-semibold px-5 py-2 rounded shadow">
+          En savoir plus
+        </a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide relative w-full h-full flex-shrink-0">
+      <img src="/images/slide2.png" alt="Butterfly - photo 2"
+           class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/45"></div>
+      <div class="absolute inset-0 max-w-6xl mx-auto px-4 flex flex-col justify-center">
+        <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-4">Concerts</h2>
+        <p class="text-white/90 text-sm md:text-base max-w-xl mb-6">
+          Prochaines dates à Toulouse et alentours.
+        </p>
+        <a href="/concerts/" class="w-fit inline-block bg-[#255147] hover:bg-[#255147] text-white font-semibold px-5 py-2 rounded shadow">
+          En savoir plus
+        </a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide relative w-full h-full flex-shrink-0">
+      <img src="/images/slide3.png" alt="Butterfly - photo 3"
+           class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/45"></div>
+      <div class="absolute inset-0 max-w-6xl mx-auto px-4 flex flex-col justify-center">
+        <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-4">Le Chef</h2>
+        <p class="text-white/90 text-sm md:text-base max-w-xl mb-6">
+          Direction artistique et projet musical.
+        </p>
+        <a href="/le-chef/" class="w-fit inline-block bg-[#255147] hover:bg-[#255147] text-white font-semibold px-5 py-2 rounded shadow">
+          En savoir plus
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flèche droite -->
+  <button id="heroNext"
+          class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 border border-white/40
+                 backdrop-blur rounded-md p-2 md:p-3 text-white shadow focus:outline-none">
+    <!-- icône chevron -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+
+  <!-- Dots -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3">
+    <button class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white/40 ring-1 ring-white/50"></button>
+    <button class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white/40 ring-1 ring-white/50"></button>
+    <button class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white/40 ring-1 ring-white/50"></button>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const track = document.getElementById('heroSlides');
+    const slides = Array.from(track.querySelectorAll('.slide'));
+    const dots = Array.from(document.querySelectorAll('.hero-dot'));
+    const nextBtn = document.getElementById('heroNext');
+
+    let index = 0;
+    const total = slides.length;
+
+    function update() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, i) => {
+        if (i === index) {
+          d.classList.add('bg-white');
+          d.classList.remove('bg-white/40');
+        } else {
+          d.classList.remove('bg-white');
+          d.classList.add('bg-white/40');
+        }
+      });
+    }
+
+    function next() {
+      index = (index + 1) % total; // boucle au début
+      update();
+    }
+
+    // Dots cliquables
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        index = i;
+        update();
+      });
+    });
+
+    // Flèche droite
+    nextBtn.addEventListener('click', next);
+
+    // clavier (→)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') next();
+    });
+
+    // init
+    update();
+  })();
+</script>

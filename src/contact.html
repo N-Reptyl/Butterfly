@@ -1,0 +1,23 @@
+---
+title: Contact
+layout: layouts/base.njk
+---
+
+## Contact
+
+<form name="contact" method="POST" data-netlify="true" class="space-y-4">
+  <input type="hidden" name="form-name" value="contact" />
+  <div>
+    <label class="block">Nom</label>
+    <input type="text" name="nom" required class="w-full px-3 py-2 rounded bg-[#1f305d] border border-blue-700" />
+  </div>
+  <div>
+    <label class="block">Email</label>
+    <input type="email" name="email" required class="w-full px-3 py-2 rounded bg-[#1f305d] border border-blue-700" />
+  </div>
+  <div>
+    <label class="block">Message</label>
+    <textarea name="message" required class="w-full px-3 py-2 rounded bg-[#1f305d] border border-blue-700"></textarea>
+  </div>
+  <button type="submit" class="bg-blue-400 px-6 py-2 rounded font-bold hover:bg-blue-500">Envoyer</button>
+</form>

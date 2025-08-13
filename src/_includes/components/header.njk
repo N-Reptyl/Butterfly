@@ -1,0 +1,231 @@
+<style>
+	.nav-container {
+    position: relative;
+	}
+	
+	.nav-link {
+    position: relative;
+    padding-top: 0.6rem; /* espace pour le point */
+    transition: color 0.3s ease;
+	}
+	
+	.nav-link.active {
+    font-weight: bold;
+	}
+	
+	.nav-indicator {
+    position: absolute;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #255147;
+    border-radius: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease;
+	}
+	
+	.nav-indicator {
+	opacity: 0;
+	transition: transform 0.6s ease, opacity 0.3s ease;
+	}
+	
+	.nav-indicator.no-transition {
+    transition: none !important;
+	}
+	
+	/* États du header */
+	.header--transparent {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+	}
+	.header--solid {
+    background-color: #fefefe !important;
+    color: #255147 !important;
+	}
+	
+	/* Couleur du point selon l’état */
+	.header--transparent .nav-indicator { background-color: #ffffff; }
+	.header--solid .nav-indicator { background-color: #255147; }
+	
+	/* Hover lisible sur fond transparent */
+	.header--transparent .nav-link:hover { color: rgba(255,255,255,0.85); }
+	
+	/* Position et transition du header */
+	#siteHeader {
+	position: fixed;
+	left: 0;
+	width: 100%;
+	transition: top 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+	will-change: top, background-color, color;
+	z-index: 50;
+	}
+	
+	/* Quand il est visible */
+	.header--visible {
+	top: 0;
+	}
+	
+</style>
+
+<header id="siteHeader" class="bg-[#fefefe] text-[#255147] shadow-md relative z-50 header--solid transition-colors duration-300">
+	<div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+		<a href="/index/" class="flex items-center gap-3">
+			<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+			alt="Logo" class="h-8 w-auto"
+			width="542.000000pt" height="642.000000pt" viewBox="0 0 542.000000 642.000000"
+			preserveAspectRatio="xMidYMid meet">
+				
+				<g transform="translate(0.000000,642.000000) scale(0.100000,-0.100000)"
+				fill="currentColor" stroke="none">
+					<path d="M252 6243 l3 -78 120 -6 c98 -4 128 -9 163 -28 69 -36 127 -95 158
+					-164 l29 -62 0 -2645 0 -2645 -26 -55 c-67 -144 -183 -209 -371 -210 l-78 0 0
+					-75 0 -75 1818 0 c1949 0 1897 -1 2082 50 278 77 495 204 701 409 222 223 355
+					463 425 766 38 170 45 417 16 590 -49 284 -176 555 -365 776 -248 290 -634
+					490 -1015 525 l-72 7 102 49 c260 125 465 302 624 538 344 516 346 1207 5
+					1717 -230 344 -562 569 -983 666 -93 21 -98 21 -1716 24 l-1623 4 3 -78z
+					m3368 -442 c70 -49 83 -174 36 -332 -37 -126 -117 -306 -186 -421 -102 -169
+					-112 -215 -60 -274 70 -80 60 -166 -33 -276 -66 -78 -64 -97 43 -488 83 -303
+					-9 -482 -375 -722 -255 -168 -531 -324 -637 -361 -10 -4 -18 -13 -18 -20 0
+					-17 81 -27 224 -27 116 0 243 -14 331 -36 131 -33 196 -83 257 -199 80 -154
+					96 -250 73 -440 -22 -178 -22 -177 15 -235 62 -96 52 -185 -35 -325 -25 -40
+					-45 -81 -45 -92 0 -11 12 -30 26 -44 77 -72 69 -114 -44 -231 -82 -85 -86 -91
+					-90 -141 -6 -78 34 -132 163 -219 123 -82 155 -118 155 -171 0 -110 -136 -165
+					-265 -108 -67 30 -80 43 -106 113 -27 73 -105 162 -176 201 -92 49 -149 58
+					-338 51 -160 -6 -173 -5 -225 15 -30 12 -100 38 -155 57 -131 47 -253 111
+					-400 213 -164 114 -221 164 -253 225 l-27 51 -3 1435 c-3 1581 -6 1503 58
+					1600 49 74 226 264 350 375 298 269 619 482 933 620 207 91 539 202 687 228
+					39 7 93 -2 120 -22z"/>
+				</g>
+			</svg>
+			
+			<h1 class="text-xs uppercase leading-none">
+				Chœur de chambre
+				<span id="brand-butterfly" class="block tracking-[0.15em] text-lg font-bold leading-none mt-[-2px]">
+					BUTTERFLY
+				</span>
+			</h1>
+			
+		</a>
+		
+		<!-- Menu Desktop -->
+		<nav class="hidden md:flex gap-6 text-sm uppercase font-semibold nav-container">
+			<div class="nav-indicator"></div>
+			<a href="/le-choeur/" class="nav-link {{ "le-choeur" | isActive(page.fileSlug) }}">Le chœur</a>
+			<a href="/le-chef/" class="nav-link {{ "le-chef" | isActive(page.fileSlug) }}">Le chef</a>
+			<a href="/galerie/" class="nav-link {{ "galerie" | isActive(page.fileSlug) }}">Galerie</a>
+			<a href="/concerts/" class="nav-link {{ "concerts" | isActive(page.fileSlug) }}">Concerts</a>
+			<a href="/infos-pratiques/" class="nav-link {{ "infos-pratiques" | isActive(page.fileSlug) }}">Infos pratiques</a>
+			</nav>
+			
+			<!-- CTA + Hamburger -->
+			<div class="flex items-center gap-4">
+				<a href="/nous-soutenir/" class="hidden md:inline bg-[#255147] text-white px-4 py-2 rounded font-bold text-sm shadow hover-[#477268]">
+					Nous soutenir
+				</a>
+				<button id="menuToggle" class="md:hidden focus:outline-none">
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						d="M4 6h16M4 12h16M4 18h16" />
+					</svg>
+				</button>
+			</div>
+		</div>
+		
+		<!-- Menu Mobile -->
+		<div id="mobileMenu" class="md:hidden fixed top-0 right-0 w-64 h-full bg-[#0B1D3B] text-white transform translate-x-full transition-transform duration-300 ease-in-out shadow-lg z-50">
+			<div class="flex justify-between items-center p-4 border-b border-blue-900">
+				<h2 class="text-xl font-bold">Menu</h2>
+				<button id="closeMenu" class="focus:outline-none">
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+			<nav class="flex flex-col gap-4 p-4 text-sm uppercase font-semibold">
+				<a href="/le-choeur/" class="{{ "le-choeur" | isActive(page.fileSlug) }}">Le chœur</a>
+				<a href="/le-chef/" class="{{ "le-chef" | isActive(page.fileSlug) }}">Le chef</a>
+				<a href="/galerie/" class="{{ "galerie" | isActive(page.fileSlug) }}">Galerie</a>
+				<a href="/concerts/" class="{{ "concerts" | isActive(page.fileSlug) }}">Agenda</a>
+				<a href="/infos-pratiques/" class="{{ "infos-pratiques" | isActive(page.fileSlug) }}">Infos pratiques</a>
+				<a href="/nous-soutenir/" class="bg-blue-400 text-center py-2 rounded font-bold shadow hover:bg-blue-500">Nous soutenir</a>
+			</nav>
+		</div>
+		
+		<script>
+			const menuToggle = document.getElementById('menuToggle');
+			const mobileMenu = document.getElementById('mobileMenu');
+			const closeMenu = document.getElementById('closeMenu');
+			menuToggle?.addEventListener('click', () => mobileMenu.classList.remove('translate-x-full'));
+			closeMenu?.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));
+			
+			const links = document.querySelectorAll('.nav-link');
+			const indicator = document.querySelector('.nav-indicator');
+			const activeLink = document.querySelector('.nav-link.active');
+			
+			let lastHovered = null;
+			let hasActive = !!activeLink;
+			
+			function moveIndicator(target) {
+				const rect = target.getBoundingClientRect();
+				const containerRect = target.parentElement.getBoundingClientRect();
+				indicator.style.transform = `translateX(${rect.left - containerRect.left + rect.width / 2 - 4}px)`;
+				indicator.style.opacity = '1';
+			}
+			
+			if (hasActive) {
+				indicator.classList.add('no-transition');
+				moveIndicator(activeLink);
+				requestAnimationFrame(() => indicator.classList.remove('no-transition'));
+				} else {
+				indicator.style.opacity = '0';
+			}
+			
+			links.forEach(link => {
+				link.addEventListener('mouseenter', () => { moveIndicator(link); lastHovered = link; });
+				link.addEventListener('mouseleave', () => {
+					if (!hasActive && lastHovered) moveIndicator(lastHovered);
+					else if (hasActive) moveIndicator(activeLink);
+				});
+			});
+			
+			// --- Gestion header transparent + slide ---
+			const header = document.getElementById('siteHeader');
+			let lastScrollY = 0;
+			
+			function isHome() {
+				const p = location.pathname.replace(/\/+$/, '');
+				return p === '' || p === '/index' || p === '/index.html';
+			}
+			
+			function applyHeaderState() {
+				const currentScroll = window.scrollY;
+				
+				// Slide down quand on descend
+				if (currentScroll > lastScrollY || currentScroll < 10) {
+					header.classList.add('header--visible');
+					} else {
+					header.classList.remove('header--visible');
+				}
+				
+				// Couleurs transparentes ou solides
+				if (isHome() && currentScroll <= 10) {
+					header.classList.add('header--transparent');
+					header.classList.remove('header--solid');
+					} else {
+					header.classList.add('header--solid');
+					header.classList.remove('header--transparent');
+				}
+				
+				lastScrollY = currentScroll;
+			}
+			
+			document.addEventListener('scroll', applyHeaderState, { passive: true });
+			document.addEventListener('DOMContentLoaded', () => {
+				header.classList.add('header--visible'); // visible dès le chargement
+				applyHeaderState();
+			});
+		</script>
+		
+	</header>

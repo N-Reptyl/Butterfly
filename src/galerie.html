@@ -1,0 +1,123 @@
+---
+title: "Le chœur en images"
+layout: layouts/base.njk
+---
+
+<!-- GALERIE -->
+<section class="bg-[#fefefe] text-[#0B1D3B] py-14">
+  <!-- Titre -->
+  <div class="flex mt-10 justify-center">
+    <div class="inline-flex flex-col items-center gap-2 mb-8">
+      <span class="h-[3px] w-full bg-[#0B1D3B]/20"></span>
+      <h1 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-4 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
+        Le chœur en images
+      </h1>
+      <span class="h-[3px] w-full bg-[#0B1D3B]/20"></span>
+    </div>
+  </div>
+
+  <!-- Grille pleine largeur, sans espaces -->
+  <div class="w-full">
+    <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-0">
+      {% for img in gallery %}
+      <button class="group relative aspect-square overflow-hidden focus:outline-none" data-index="{{ loop.index0 }}">
+        <img src="{{ img.src }}" alt="{{ img.alt }}"
+             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+        <!-- overlay léger au hover -->
+        <span class="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></span>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50">
+  <!-- bouton fermer -->
+  <button id="lbClose" class="absolute top-4 right-4 p-3 text-white/80 hover:text-white" aria-label="Fermer">
+    <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <!-- flèche gauche -->
+  <button id="lbPrev" class="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 p-3 text-white/80 hover:text-white">
+    <svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+
+  <!-- flèche droite -->
+  <button id="lbNext" class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 p-3 text-white/80 hover:text-white">
+    <svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+
+  <!-- image -->
+  <div class="max-w-[95vw] max-h-[85vh] px-4">
+    <img id="lbImg" src="" alt="" class="max-h-[85vh] max-w-full w-auto h-auto mx-auto rounded-md shadow-lg">
+    <div id="lbCaption" class="text-center text-white/80 text-sm mt-3"></div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const items = {{ gallery | dump | safe }}; // [{src, alt, num}, ...]
+    const buttons = Array.from(document.querySelectorAll('#galleryGrid > button'));
+    const overlay = document.getElementById('lightbox');
+    const img = document.getElementById('lbImg');
+    const caption = document.getElementById('lbCaption');
+    const prev = document.getElementById('lbPrev');
+    const next = document.getElementById('lbNext');
+    const closeBtn = document.getElementById('lbClose');
+
+    let index = 0;
+
+    function open(i){
+      index = (i + items.length) % items.length;
+      const it = items[index];
+      img.src = it.src;
+      img.alt = it.alt || '';
+      caption.textContent = `Photo ${it.num} — ${index+1}/${items.length}`;
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      overlay.classList.add('hidden');
+      document.body.style.overflow = '';
+      // libère le src pour éviter de bloquer le scroll sur mobiles très anciens
+      // img.src = '';
+    }
+    function go(delta){ open(index + delta); }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => open(parseInt(btn.dataset.index,10)));
+    });
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', (e) => {
+      // fermer si click en dehors de l'image
+      if (!e.target.closest('#lbImg') && !e.target.closest('#lbPrev') && !e.target.closest('#lbNext')) {
+        close();
+      }
+    });
+
+    // clavier
+    document.addEventListener('keydown', (e) => {
+      if (overlay.classList.contains('hidden')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowLeft') go(-1);
+    });
+
+    // swipe mobile
+    let startX = 0;
+    overlay.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
+    overlay.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  })();
+</script>

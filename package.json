@@ -1,0 +1,19 @@
+{
+  "name": "butterfly-site",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "tailwind:build": "tailwindcss -i ./src/input.css -o ./assets/styles.css --minify",
+    "start": "npm run tailwind:build & npm run dev"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "autoprefixer": "^10.0.0",
+    "postcss": "^8.0.0",
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11"
+  }
+}

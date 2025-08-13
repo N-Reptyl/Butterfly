@@ -1,0 +1,88 @@
+module.exports = function (eleventyConfig) {
+	eleventyConfig.addPassthroughCopy({ "public/images": "images" });
+	
+	eleventyConfig.addShortcode("year", () => new Date().getFullYear());
+	
+	eleventyConfig.addFilter("isActive", function (slug, currentSlug) {
+		return slug === currentSlug ? "active" : "";
+	});
+	
+	// Filtre date FR courte
+	eleventyConfig.addFilter("dateFR", (value, opts={ month:"long", day:"2-digit" }) => {
+		const d = (value instanceof Date) ? value : new Date(value);
+		return d.toLocaleDateString("fr-FR", opts);
+	});
+	
+	// Collection concerts (tri décroissant)
+	eleventyConfig.addCollection("concerts", api => {
+		return api.getFilteredByGlob("src/concerts/*.md")
+		.sort((a,b) => new Date(b.data.date) - new Date(a.data.date));
+	});
+	
+	// Séparation à venir / passés selon toutes les dates
+eleventyConfig.addCollection("concertsUpcoming", api => {
+  const now = new Date();
+  return api.getFilteredByGlob("src/concerts/*.md")
+    .filter(p => {
+      if (!Array.isArray(p.data.dates)) return false;
+      return p.data.dates.some(d => new Date(d.start) >= now);
+    })
+    // Trie par première date à venir
+    .sort((a, b) => {
+      const nextDateA = a.data.dates
+        .map(d => new Date(d.start))
+        .filter(d => d >= now)
+        .sort((d1, d2) => d1 - d2)[0];
+      const nextDateB = b.data.dates
+        .map(d => new Date(d.start))
+        .filter(d => d >= now)
+        .sort((d1, d2) => d1 - d2)[0];
+      return nextDateA - nextDateB;
+    });
+});
+
+eleventyConfig.addCollection("concertsPast", api => {
+  const now = new Date();
+  return api.getFilteredByGlob("src/concerts/*.md")
+    .filter(p => {
+      if (!Array.isArray(p.data.dates)) return false;
+      return p.data.dates.every(d => new Date(d.start) < now);
+    })
+    // Trie par dernière date passée (plus récente d'abord)
+    .sort((a, b) => {
+      const lastDateA = a.data.dates
+        .map(d => new Date(d.start))
+        .sort((d1, d2) => d2 - d1)[0];
+      const lastDateB = b.data.dates
+        .map(d => new Date(d.start))
+        .sort((d1, d2) => d2 - d1)[0];
+      return lastDateB - lastDateA;
+    });
+});
+
+	
+	eleventyConfig.addCollection("associes", api =>
+		api.getFilteredByGlob("src/associes/*.md")
+		.sort((a,b) => (a.data.order ?? 0) - (b.data.order ?? 0))
+	);
+	
+	eleventyConfig.addCollection("choristes", (api) =>
+		api.getFilteredByGlob("src/choristes/*.md")
+		.sort((a,b) => (a.data.order ?? 999) - (b.data.order ?? 999))
+	);
+	
+	eleventyConfig.addPassthroughCopy({ "src/images": "images" });
+	
+	return {
+		dir: {
+			input: "src",
+			includes: "_includes",
+			data: "_data",
+			output: "dist"
+		},
+		templateFormats: ["html", "md", "njk", "ico"],
+		htmlTemplateEngine: "njk",
+		markdownTemplateEngine: "njk",
+		passthroughFileCopy: true
+	};
+};

@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+---
+<section class="bg-[#0B1D3B] text-white py-10">
+  <div class="max-w-4xl mx-auto px-4">
+    <h1 class="text-3xl md:text-4xl font-extrabold">{{ title }}</h1>
+    <p class="mt-2 text-white/80">
+      {{ city }}{% if venue %} · {{ venue }}{% endif %}
+      {% if date %} · {{ date | dateFR({ weekday:"long", day:"2-digit", month:"long", year:"numeric" }) }}{% endif %}
+      {% if time %} · {{ time }}{% endif %}
+    </p>
+
+    {% if cover %}
+    <img src="{{ cover }}" alt="Affiche – {{ title }}" class="mt-6 w-full rounded-md shadow" />
+    {% endif %}
+
+    <article class="prose prose-invert max-w-none mt-8">
+      {{ content | safe }}
+    </article>
+  </div>
+</section>

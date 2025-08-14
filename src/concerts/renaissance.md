@@ -30,5 +30,6 @@ repertoire:
   
 program_gallery_dir: "/images/concerts/renaissance/programme"
 gallery_photos_dir: "/images/concerts/renaissance/galerie"
+program_pdf : "/docs/concerts/renaissance/note.pdf"
 ---
 Bla bla

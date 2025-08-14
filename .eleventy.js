@@ -4,6 +4,7 @@ const path = require("path");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ "public/images": "images" });
+	eleventyConfig.addPassthroughCopy({ "public/docs": "docs" });
 	
 	eleventyConfig.addShortcode("year", () => new Date().getFullYear());
 	

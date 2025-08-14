@@ -1,21 +1,323 @@
 ---
 layout: layouts/base.njk
+title: "{{ title }}"
 ---
-<section class="bg-[#0B1D3B] text-white py-10">
-  <div class="max-w-4xl mx-auto px-4">
-    <h1 class="text-3xl md:text-4xl font-extrabold">{{ title }}</h1>
-    <p class="mt-2 text-white/80">
-      {{ city }}{% if venue %} · {{ venue }}{% endif %}
-      {% if date %} · {{ date | dateFR({ weekday:"long", day:"2-digit", month:"long", year:"numeric" }) }}{% endif %}
-      {% if time %} · {{ time }}{% endif %}
-    </p>
 
-    {% if cover %}
-    <img src="{{ cover }}" alt="Affiche – {{ title }}" class="mt-6 w-full rounded-md shadow" />
-    {% endif %}
+<div class="bg-[radial-gradient(circle,_#3a7f6f_0%,_#255147_60%)]">
+	
+	{# ===================== HERO ===================== #}
+	<section class="relative overflow-hidden text-white" style="--overlay: rgba(0,0,0,.55);">
+		<div class="absolute inset-0">
+			<div class="absolute inset-0 bg-[color:var(--overlay)] z-10"></div>
+			<img src="{{ aff | default('/images/concerts/placeholder-hero.jpg') }}" alt=""
+			class="w-full h-[38vh] md:h-[52vh] object-cover" />
+		</div>
+		<div class="relative z-20 max-w-6xl mx-auto px-4 h-[0vh] md:h-[32vh] flex flex-col items-start justify-end pb-8">
+			<h1 class="text-3xl md:text-4xl font-extrabold tracking-wide">{{ title }}</h1>
+			{% if subtitle %}<p class="text-white/90 text-lg md:text-xl mt-1">{{ subtitle }}</p>{% endif %}
+		</div>
+	</section>
+	
+	
+	{# ======= SEPARATEUR (barres + titre centré) ======= #}
+	{% macro Divider(txt, tone='light') %}
+	{% set bar %}{% if tone == 'light' %}bg-white/30{% else %}bg-[#0B1D3B]/20{% endif %}{% endset %}
+	
+	<div class="flex items-center justify-center my-5">
+		<span class="hidden sm:block h-px w-24 md:w-48 {{ bar }}"></span>
+		<h2 class="mx-4 text-xl md:text-2xl font-extrabold uppercase tracking-wide">{{ txt }}</h2>
+		<span class="hidden sm:block h-px w-24 md:w-48 {{ bar }}"></span>
+	</div>
+	{% endmacro %}
+	
+	
+	
+	{# ===================== AFFICHE + INFOS (titre / sous-titre / description / dates) ===================== #}
+	<section class="text-white pt-10 pb-0">
+		<div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-start">
+			
+			{# Affiche à gauche #}
+			<div class="md:col-span-4">
+				<div class="rounded-lg overflow-hidden ring-1 ring-white/15 shadow-lg">
+					<img
+					src="{{ poster | default(cover) | default('/images/concerts/placeholder-hero.jpg') }}"
+					alt="Affiche — {{ title }}"
+					class="w-full object-cover"
+					style="aspect-ratio: 29,7/21 ;"
+					/>
+				</div>
+			</div>
+			
+			{# Colonne droite : titre, sous-titre, description, dates #}
+			<div class="md:col-span-8">
+				<h2 class="text-2xl md:text-3xl font-extrabold tracking-wide">{{ title }}</h2>
+				{% if subtitle %}<p class="text-white/90 text-lg mt-1">{{ subtitle }}</p>{% endif %}
+				
+				{% set desc = description or excerpt %}
+				{% if desc %}
+				<p class="mt-4 text-white/90 leading-relaxed">{{ desc }}</p>
+				{% endif %}
+				
+				{{ Divider("Dates jouées") }}
+				
+				<ul class="space-y-4">
+					{% for d in dates %}
+					<li class="grid grid-cols-[70px,1fr] gap-4 items-center bg-white/5 ring-1 ring-white/15 rounded-lg p-4">
+						<div class="flex flex-col items-center justify-center rounded-md ring-1 ring-white/30 px-3 py-2 leading-tight">
+							<div class="text-2xl font-extrabold">{{ d.start | date("dd", "fr") }}</div>
+							<div class="text-[10px] uppercase tracking-wide">{{ d.start | date("LLL", "fr") }}</div>
+						</div>
+						<div class="min-w-0">
+							<div class="font-semibold">
+								{{ (d.start | date("EEEE d MMMM yyyy", "fr")) | capitalize }}
+								- {{ d.start | date("HH:mm", "fr") }} à {{ d.end | date("HH:mm", "fr") }}
+							</div>
+							<div class="text-white/90 truncate">
+								{{ d.venue }}{% if d.city %}, {{ d.city }}{% endif %}
+							</div>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			
+		</div>
+	</section>
+	
+	
+	{# ===================== NOTE DE PROGRAMME ===================== #}
+	<section class="text-white py-12">
+		<div class="max-w-6xl mx-auto px-4">
+			{{ Divider("Note de programme") }}
+			
+			<div class="prose max-w-none md:columns-2 md:gap-10 prose-p:mb-4 text-white/95">
+				{{ content | safe }}
+			</div>
+			
+			{# Carrousel 5 pages — non bouclant — lightbox #}
+			{% if program_gallery_dir %}
+			{% set program_gallery = program_gallery_dir | dirImages %}
+			{% endif %}
+			
+			{% if program_gallery and program_gallery | length %} 
+			<div class="mt-10 relative overflow-hidden">
+				<div class="overflow-hidden">
+					<!-- Track: no overflow hidden here -->
+					<div id="progTrack" class="flex gap-3 transition-transform duration-500 ease-out will-change-transform">
+						{% for img in program_gallery %}
+						<button
+						class="lb-trigger group relative w-full sm:w-1/2 md:w-[33.3333%] lg:w-[19%] shrink-0 focus:outline-none"
+						data-src="{{ img }}" aria-label="Voir la page {{ loop.index }} en grand">
+							<img src="{{ img }}" alt="Note de programme — page {{ loop.index }}"
+							class="aspect-[210/297] w-full object-cover rounded-md ring-1 ring-black/5 shadow-sm group-hover:opacity-90"
+							/>
+						</button>
+						{% endfor %}
+					</div>
+				</div>
+				
+				<button id="progPrev"
+				class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-md p-2 text-[#0B1D3B] shadow ring-1 ring-black/10 disabled:opacity-40 disabled:pointer-events-none">
+					<svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+					</svg>
+				</button>
+				<button id="progNext"
+				class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-md p-2 text-[#0B1D3B] shadow ring-1 ring-black/10 disabled:opacity-40 disabled:pointer-events-none">
+					<svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+					</svg>
+				</button>
+			</div>
+			{% endif %}
+			
+			{% if program_pdf %}
+			<div class="mt-8">
+				<a href="{{ program_pdf }}" target="_blank" rel="noopener"
+				class="inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold bg-[#255147] text-white hover:bg-[#2f6a5f] shadow ring-1 ring-black/10">
+					Télécharger la note de programme (PDF)
+				</a>
+			</div>
+			{% endif %}
+		</div>
+	</section>
+	
+	
+	{# ===================== EN IMAGES (GRILLE — pas de carrousel) ===================== #}
+	{% if gallery_photos_dir %}
+	{% set gallery_photos = gallery_photos_dir | dirImages %}
+	{% endif %}
+	{% if gallery_photos and gallery_photos | length %}
+	<section class="text-white pb-12 -mt-2">
+		<div class="max-w-6xl mx-auto px-4">
+			{{ Divider("En images") }}
+			
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+				{% for img in gallery_photos %}
+				<button class="lb-trigger focus:outline-none" data-src="{{ img }}" aria-label="Voir l’image {{ loop.index }}">
+					<img src="{{ img }}" alt="Photo {{ loop.index }} — {{ title }}"
+					class="aspect-[4/3] w-full object-cover rounded-md ring-1 ring-black/5 shadow-sm hover:opacity-90" />
+				</button>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	{% endif %}
+	
+	
+	{# ===================== ENREGISTREMENTS (OPTIONNEL) ===================== #}
+	{% if recordings and recordings | length %}
+	<section class="text-white py-12">
+		<div class="max-w-6xl mx-auto px-4">
+			{{ Divider("Enregistrements") }}
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				{% for r in recordings %}
+				{% if r.type == "youtube" %}
+				<div class="aspect-video rounded-lg overflow-hidden ring-1 ring-white/20 shadow">
+					<iframe class="w-full h-full" src="{{ r.url }}" title="YouTube video" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen></iframe>
+				</div>
+				{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	{% endif %}
+	
+	
+	{# ===================== LIGHTBOX ===================== #}
+	<div id="lightbox" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-50">
+		<button id="lbClose" class="absolute top-4 right-4 p-2 bg-white/90 rounded shadow">
+			<svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="#0B1D3B">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+			</svg>
+		</button>
+		<button id="lbPrev" class="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded shadow">
+			<svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="#0B1D3B">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+			</svg>
+		</button>
+		<button id="lbNext" class="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded shadow">
+			<svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="#0B1D3B">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+			</svg>
+		</button>
+		<div class="h-full w-full flex items-center justify-center px-4">
+			<img id="lbImg" src="" alt="" class="max-h-[88vh] max-w-[92vw] object-contain rounded shadow-2xl" />
+		</div>
+	</div>
+	
+</div> {# fin wrapper gradient #}
 
-    <article class="prose prose-invert max-w-none mt-8">
-      {{ content | safe }}
-    </article>
-  </div>
-</section>
+
+{# ===================== JS : carrousel + grille + lightbox ===================== #}
+<script>
+	(function () {
+		// ---------- CAROUSEL NOTE DE PROGRAMME ----------
+		const track = document.getElementById('progTrack');
+		const prev  = document.getElementById('progPrev');
+		const next  = document.getElementById('progNext');
+		
+		if (!track || !prev || !next) return;
+		
+		const items = Array.from(track.children);
+		
+		// Combien d’items visibles selon la largeur (doit matcher tes classes Tailwind)
+		function visibleCount() {
+			const w = window.innerWidth;
+			if (w >= 1024) return 5;   // lg:w-[20%]
+			if (w >= 768)  return 3;   // md:w-[33.3333%]
+			if (w >= 640)  return 2;   // sm:w-1/2
+			return 1;                  // w-full
+		}
+		
+		let index = 0;
+		
+		function clampIndex() {
+			const vis = visibleCount();
+			const max = Math.max(0, items.length - vis);
+			if (index < 0) index = 0;
+			if (index > max) index = max;
+			prev.disabled = (index === 0);
+			next.disabled = (index === max);
+			prev.classList.toggle('opacity-40', prev.disabled);
+			next.classList.toggle('opacity-40', next.disabled);
+		}
+		
+		// Translate le track pile au début de l’item `index`
+		function update() {
+			clampIndex();
+			const target = items[index];
+			if (!target) return;
+			const x = target.offsetLeft; // position exacte dans le track, gap inclus
+			track.style.transform = `translateX(${-x}px)`;
+		}
+		
+		prev.addEventListener('click', () => { index--; update(); });
+		next.addEventListener('click', () => { index++; update(); });
+		
+		// Recalcule tout au resize (les offsetLeft changent avec les breakpoints)
+		window.addEventListener('resize', () => {
+			// force un “alignement” sur le premier visible après resize
+			index = Math.min(index, Math.max(0, items.length - visibleCount()));
+			// petite astuce: reset transform avant de relire les positions
+			track.style.transform = 'translateX(0)';
+			// reflow puis update
+			requestAnimationFrame(update);
+		});
+		
+		// init
+		track.style.willChange = 'transform';
+		track.style.transition = 'transform 500ms ease-out';
+		update();
+		
+		/* ---------------- LIGHTBOX (générique) ---------------- */
+		const lb      = document.getElementById('lightbox');
+		const lbImg   = document.getElementById('lbImg');
+		const lbClose = document.getElementById('lbClose');
+		const lbPrev  = document.getElementById('lbPrev');
+		const lbNext  = document.getElementById('lbNext');
+		
+		// Toutes les vignettes cliquables (carrousel + grille)
+		const triggers = Array.from(document.querySelectorAll('.lb-trigger'));
+		let current = -1;
+		
+		function openLB(i){
+			current = i;
+			lbImg.src = triggers[current].dataset.src;
+			lb.classList.remove('hidden');
+			document.body.style.overflow = 'hidden';
+			updateLBButtons();
+		}
+		function closeLB(){
+			lb.classList.add('hidden');
+			document.body.style.overflow = '';
+		}
+		function updateLBButtons(){
+			lbPrev.disabled = (current <= 0);
+			lbNext.disabled = (current >= triggers.length - 1);
+			lbPrev.classList.toggle('opacity-40', lbPrev.disabled);
+			lbNext.classList.toggle('opacity-40', lbNext.disabled);
+		}
+		function stepLB(dir){
+			const nextIdx = current + dir;
+			if (nextIdx < 0 || nextIdx >= triggers.length) return;
+			current = nextIdx;
+			lbImg.src = triggers[current].dataset.src;
+			updateLBButtons();
+		}
+		
+		triggers.forEach((btn, i)=> btn.addEventListener('click', ()=> openLB(i)));
+		lbClose.addEventListener('click', closeLB);
+		lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLB(); });
+		document.addEventListener('keydown', (e)=>{
+			if (lb.classList.contains('hidden')) return;
+			if (e.key === 'Escape') closeLB();
+			if (e.key === 'ArrowLeft')  stepLB(-1);
+			if (e.key === 'ArrowRight') stepLB(1);
+		});
+		lbPrev.addEventListener('click', ()=> stepLB(-1));
+		lbNext.addEventListener('click', ()=> stepLB(1));
+	})();
+</script>

@@ -26,7 +26,11 @@ layout: layouts/base.njk
 		
 		{% if next %}
 		<section aria-labelledby="upcoming-title" class="mb-14">
-			<h2 id="upcoming-title" class="text-center text-2xl md:text-3xl font-extrabold mb-6">Concert à venir</h2>
+			<div class="flex items-center justify-center my-5">
+				<span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+				<h2 class="mx-4 text-xl md:text-2xl font-extrabold uppercase tracking-wide">Concert à venir</h2>
+				<span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+			</div>
 			
 			<article class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-center">
 				<!-- Image -->
@@ -116,14 +120,16 @@ layout: layouts/base.njk
 	{# ===== CONCERTS PASSÉS ===== #}
 	<section aria-labelledby="past-title" class="">
 		<div class="relative flex items-center">
-			<div class="flex-grow border-t border-white/30"></div>
+			<div class="flex-grow border-t border-white/10"></div>
 			<span class="mx-4 text-white/60 uppercase tracking-wide text-sm">-</span>
-			<div class="flex-grow border-t border-white/30"></div>
+			<div class="flex-grow border-t border-white/10"></div>
 		</div>
 		
-		<h2 id="past-title" class="text-center text-2xl md:text-3xl font-extrabold mb-6">
-			Concerts passés
-		</h2>
+		<div class="flex items-center justify-center my-5">
+				<span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+				<h2 class="mx-4 text-xl md:text-2xl font-extrabold uppercase tracking-wide">Concerts passés</h2>
+				<span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+			</div>
 		
 		{% set items = collections.concertsPast %}
 		{% set total = items | length %}

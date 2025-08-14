@@ -4,6 +4,16 @@ layout: layouts/base.njk
 ---
 
 ## Nous soutenir
-<div class="mt-10 px-10 mx-auto">
-<iframe id="haWidget" allowtransparency="true" scrolling="auto" src="https://www.helloasso.com/associations/familia-production/formulaires/1/widget" style="width: 100%; height: 750px; border: none;"></iframe>
+<div class="bg-[radial-gradient(circle,_#f3f3f3_70%,_#e6ffef_100%)] mt-10 px-10 mx-auto">
+<iframe onload="window.addEventListener(
+    'message', e => {
+      const dataHeight = e.data.height
+      const haWidgetElement = document.getElementById('haWidget')
+
+      if (dataHeight > parseFloat(haWidgetElement.height || 0)) {
+        haWidgetElement.height = dataHeight + 'px'
+      }
+    }
+  )"
+id="haWidget" loading="lazy" allowtransparency="true" height="750px" src="https://www.helloasso.com/associations/familia-production/formulaires/1/widget" style="width: 100%; border: none;"></iframe>
 </div>

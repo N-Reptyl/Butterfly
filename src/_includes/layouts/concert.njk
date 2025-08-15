@@ -3,7 +3,7 @@ layout: layouts/base.njk
 title: "{{ title }}"
 ---
 
-<div class="bg-[radial-gradient(circle,_#3a7f6f_0%,_#255147_60%)]">
+<div class="bg-hero-gradient">
 	
 	{# ===================== HERO ===================== #}
 	<section class="relative overflow-hidden text-white" style="--overlay: rgba(0,0,0,.55);">
@@ -21,7 +21,7 @@ title: "{{ title }}"
 	
 	{# ======= MACRO SEPARATEUR ======= #}
 	{% macro Divider(txt, tone='light') %}
-	{% set bar %}{% if tone == 'light' %}bg-white/30{% else %}bg-[#0B1D3B]/20{% endif %}{% endset %}
+	{% set bar %}{% if tone == 'light' %}bg-white/30{% else %}bg-dark/20{% endif %}{% endset %}
 	
 	<div class="flex items-center justify-center my-5">
 		<span class="hidden sm:block h-px w-24 md:w-48 {{ bar }}"></span>
@@ -55,7 +55,7 @@ title: "{{ title }}"
 				
 				{% set desc = description or excerpt %}
 				{% if desc %}
-				<div class="mt-4 relative bg-[#fefefe]/90 text-[#183831] ring-1 ring-white/15 shadow-lg px-6 py-4 md:px-8 md:py-4">
+				<div class="mt-4 relative bg-[#fefefe]/90 text-accent ring-1 ring-white/15 shadow-lg px-6 py-4 md:px-8 md:py-4">
 				<span class="pointer-events-none absolute -top-2 -right-2 h-1 w-20 bg-white"></span>
 					<span class="pointer-events-none absolute -top-2 -right-2 h-20 w-1 bg-white"></span>
 					
@@ -124,13 +124,13 @@ title: "{{ title }}"
 				</div>
 				
 				<button id="progPrev"
-				class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-md p-2 text-[#0B1D3B] shadow ring-1 ring-black/10 disabled:opacity-40 disabled:pointer-events-none">
+				class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-md p-2 text-dark shadow ring-1 ring-black/10 disabled:opacity-40 disabled:pointer-events-none">
 					<svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
 					</svg>
 				</button>
 				<button id="progNext"
-				class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-md p-2 text-[#0B1D3B] shadow ring-1 ring-black/10 disabled:opacity-40 disabled:pointer-events-none">
+				class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-md p-2 text-dark shadow ring-1 ring-black/10 disabled:opacity-40 disabled:pointer-events-none">
 					<svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
 					</svg>
@@ -142,7 +142,7 @@ title: "{{ title }}"
 			<div class="mt-8 text-center">
 				<a href="{{ program_pdf }}" target="_blank" rel="noopener"
 				class="mt-2 inline-flex items-center justify-center px-6 py-2 rounded-full font-semibold
-							bg-[#c79b6a] text-[#0B1D3B] hover:bg-[#d2ab7f] transition shadow">
+							bg-[#c79b6a] text-dark hover:bg-[#d2ab7f] transition shadow">
 					Télécharger la note de programme (PDF)
 				</a>
 			</div>

@@ -24,9 +24,9 @@ title: "{{ title }}"
 	{% set bar %}{% if tone == 'light' %}bg-white/30{% else %}bg-[#0B1D3B]/20{% endif %}{% endset %}
 	
 	<div class="flex items-center justify-center my-5">
-		<span class="hidden sm:block h-px w-24 md:w-48 {{ bar }}"></span>
+		<span class="sm:block h-px w-24 md:w-48 {{ bar }}"></span>
 		<h2 class="mx-4 text-xl md:text-2xl font-extrabold uppercase tracking-wide">{{ txt }}</h2>
-		<span class="hidden sm:block h-px w-24 md:w-48 {{ bar }}"></span>
+		<span class="sm:block h-px w-24 md:w-48 {{ bar }}"></span>
 	</div>
 	{% endmacro %}
 	
@@ -55,19 +55,27 @@ title: "{{ title }}"
 				
 				{% set desc = description or excerpt %}
 				{% if desc %}
-				<p class="mt-4 text-white/90 leading-relaxed">{{ desc }}</p>
+				<div class="mt-4 relative bg-[#fefefe]/90 text-[#183831] ring-1 ring-white/15 shadow-lg px-6 py-4 md:px-8 md:py-4">
+				<span class="pointer-events-none absolute -top-2 -right-2 h-1 w-20 bg-white"></span>
+					<span class="pointer-events-none absolute -top-2 -right-2 h-20 w-1 bg-white"></span>
+					
+					<!-- Angle blanc bas-gauche -->
+					<span class="pointer-events-none absolute -bottom-2 -left-2 h-1 w-20 bg-white"></span>
+					<span class="pointer-events-none absolute -bottom-2 -left-2 h-20 w-1 bg-white"></span>
+				<p class="leading-relaxed text-justify">{{ desc }}</p>
+				</div>
 				{% endif %}
 				
 				{{ Divider("Dates jouées") }}
 				
 				<ul class="space-y-4">
 					{% for d in dates %}
-					<li class="grid grid-cols-[70px,1fr] gap-4 items-center bg-white/5 ring-1 ring-white/15 rounded-lg p-4">
-						<div class="flex flex-col items-center justify-center rounded-md ring-1 ring-white/30 px-3 py-2 leading-tight">
-							<div class="text-2xl font-extrabold">{{ d.start | date("dd", "fr") }}</div>
+					<li class="grid grid-cols-[70px,1fr] gap-4 items-center bg-white/5 ring-1 ring-white/15 rounded-lg p-2">
+						<div class="flex flex-col items-center justify-center rounded-md ring-1 ring-white/30 px-1 py-1 leading-tight">
+							<div class="text-lg font-extrabold">{{ d.start | date("dd", "fr") }}</div>
 							<div class="text-[10px] uppercase tracking-wide">{{ d.start | date("LLL", "fr") }}</div>
 						</div>
-						<div class="min-w-0">
+						<div class="min-w-0 text-sm">
 							<div class="font-semibold">
 								{{ (d.start | date("EEEE d MMMM yyyy", "fr")) | capitalize }}
 								- {{ d.start | date("HH:mm", "fr") }} à {{ d.end | date("HH:mm", "fr") }}

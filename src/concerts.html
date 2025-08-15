@@ -27,9 +27,9 @@ layout: layouts/base.njk
 		{% if next %}
 		<section aria-labelledby="upcoming-title" class="mb-14">
 			<div class="flex items-center justify-center my-5">
-				<span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+				<span class="sm:block h-px w-24 md:w-48 bg-white/30"></span>
 				<h2 class="mx-4 text-xl md:text-2xl font-extrabold uppercase tracking-wide">Concert à venir</h2>
-				<span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+				<span class="sm:block h-px w-24 md:w-48 bg-white/30"></span>
 			</div>
 			
 			<article class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-center">
@@ -74,18 +74,18 @@ layout: layouts/base.njk
 								{% if d.city %}{% set loc = loc ~ ', ' ~ d.city %}{% endif %}
 								{% set desc = next.data.subtitle or '' %}
 								
-								<li class="bg-white/5 ring-1 ring-white/15 rounded-lg px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+								<li class="bg-white/5 ring-1 ring-white/15 rounded-lg px-2 py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
 									<!-- Date + lieu -->
-									<div class="flex items-start gap-3">
-										<div class="flex-shrink-0 text-center ring-1 ring-white/30 rounded-md px-3 py-2 leading-tight">
+									<div class="flex items-start gap-2">
+										<div class="flex-shrink-0 text-center ring-1 ring-white/30 rounded-md px-2 py-2 leading-tight">
 											<div class="font-extrabold text-lg date-dd" data-start="{{ d.start }}"></div>
 											<div class="text-[10px] uppercase tracking-wide date-mm" data-start="{{ d.start }}"></div>
 										</div>
-										<div>
+										<div class="text-sm">
 											<div class="font-semibold date-full" data-start="{{ d.start }}" data-end="{{ d.end }}"></div>
 											<div class="opacity-90">{{ loc }}</div>
 											<a href="#"
-											class="text-white no-underline hover:text-white/80 add-ics"
+											class="text-white text-xs no-underline hover:text-white/80 add-ics"
 											data-title="{{ next.data.title | escape }}"
 											data-description="{{ desc | escape }}"
 											data-start="{{ d.start }}"
@@ -126,9 +126,9 @@ layout: layouts/base.njk
 		</div>
 		
 		<div class="flex items-center justify-center my-5">
-				<span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+				<span class="sm:block h-px w-24 md:w-48 bg-white/30"></span>
 				<h2 class="mx-4 text-xl md:text-2xl font-extrabold uppercase tracking-wide">Concerts passés</h2>
-				<span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+				<span class="sm:block h-px w-24 md:w-48 bg-white/30"></span>
 			</div>
 		
 		{% set items = collections.concertsPast %}

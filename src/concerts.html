@@ -6,7 +6,6 @@ layout: layouts/base.njk
 <section class="bg-[url(/images/fond.png)] bg-no-repeat bg-fixed bg-cover text-white pt-10">
 	<div class="mt-10 max-w-6xl mx-auto px-4">
 		
-		<!-- Titre page -->
 		<div class="flex justify-center">
 			<div class="inline-flex flex-col items-center gap-2">
 				<span class="h-[3px] w-full bg-white/80"></span>
@@ -18,7 +17,7 @@ layout: layouts/base.njk
 		</div>
 		<p class="text-center text-white/90 mb-4">Découvrez nos concerts passés et à venir ci-dessous&nbsp;!</p>
 		
-		{# ===== CONCERT À VENIR (SINGULIER) ===== #}
+		{# ===== CONCERT À VENIR ===== #}
 		{% set next = null %}
 		{% if collections.concertsUpcoming and (collections.concertsUpcoming | length) > 0 %}
 		{% set next = collections.concertsUpcoming[0] %}
@@ -38,7 +37,7 @@ layout: layouts/base.njk
 					<div class="relative overflow-hidden ring-1 ring-white/20 shadow-lg bg-white/5" style="padding-top: 141.4%;">
 						<img src="{{ next.data.image }}" alt="{{ next.data.title }}" class="absolute inset-0 w-full h-full object-cover">
 					</div>
-					<!-- Filets décoratifs gauche (option) -->
+					<!-- Filets décoratifs gauche -->
 					<span class="hidden md:block absolute -left-6 top-16 h-[60%] w-px bg-white/20"></span>
 					<span class="hidden md:block absolute -left-10 top-28 h-[38%] w-px bg-white/10"></span>
 				</figure>
@@ -69,7 +68,6 @@ layout: layouts/base.njk
 							<h4 class="font-bold text-white/90">Dates</h4>
 							<ul class="space-y-3">
 								{% for d in next.data.dates %}
-								{# Construire les chaînes AVANT usage dans les attributs #}
 								{% set loc = d.venue %}
 								{% if d.city %}{% set loc = loc ~ ', ' ~ d.city %}{% endif %}
 								{% set desc = next.data.subtitle or '' %}
@@ -117,6 +115,7 @@ layout: layouts/base.njk
 		{% endif %}
 		
 	</div>
+
 	{# ===== CONCERTS PASSÉS ===== #}
 	<section aria-labelledby="past-title" class="">
 		<div class="relative flex items-center">
@@ -136,7 +135,6 @@ layout: layouts/base.njk
 		{% set firstRowCount = total % 3 %}
 		
 		<div class="border-r-2 border-b-2 border-white">
-			{# Première ligne : 1 ou 2 items en pleine largeur #}
 			{% if firstRowCount != 0 %}
 			<div class="grid grid-cols-1 {% if firstRowCount == 2 %}md:grid-cols-2{% else %}md:grid-cols-1{% endif %} gap-0 md:gap-0">
 				{% for c in items %}
@@ -149,7 +147,6 @@ layout: layouts/base.njk
 			</div>
 			{% endif %}
 			
-			{# Le reste : lignes de 3 #}
 			{% for c in items %}
 			{% if loop.index0 >= firstRowCount %}
 			{% set rel = loop.index0 - firstRowCount %}

@@ -19,20 +19,20 @@ title: "{{ title }}"
 	</section>
 	
 	
-	{# ======= SEPARATEUR (barres + titre centré) ======= #}
+	{# ======= MACRO SEPARATEUR ======= #}
 	{% macro Divider(txt, tone='light') %}
 	{% set bar %}{% if tone == 'light' %}bg-white/30{% else %}bg-[#0B1D3B]/20{% endif %}{% endset %}
 	
 	<div class="flex items-center justify-center my-5">
-		<span class="sm:block h-px w-24 md:w-48 {{ bar }}"></span>
+		<span class="hidden sm:block h-px w-24 md:w-48 {{ bar }}"></span>
 		<h2 class="mx-4 text-xl md:text-2xl font-extrabold uppercase tracking-wide">{{ txt }}</h2>
-		<span class="sm:block h-px w-24 md:w-48 {{ bar }}"></span>
+		<span class="hidden sm:block h-px w-24 md:w-48 {{ bar }}"></span>
 	</div>
 	{% endmacro %}
 	
 	
 	
-	{# ===================== AFFICHE + INFOS (titre / sous-titre / description / dates) ===================== #}
+	{# ===================== AFFICHE + INFOS ===================== #}
 	<section class="text-white pt-10 pb-0">
 		<div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-start">
 			
@@ -48,7 +48,7 @@ title: "{{ title }}"
 				</div>
 			</div>
 			
-			{# Colonne droite : titre, sous-titre, description, dates #}
+			{# Infos à droite : titre, sous-titre, description, dates #}
 			<div class="md:col-span-8">
 				<h2 class="text-2xl md:text-3xl font-extrabold tracking-wide">{{ title }}</h2>
 				{% if subtitle %}<p class="text-white/90 text-lg mt-1">{{ subtitle }}</p>{% endif %}
@@ -102,7 +102,7 @@ title: "{{ title }}"
 				{{ content | safe }}
 			</div>
 			
-			{# Carrousel 5 pages — non bouclant — lightbox #}
+			{# Carrousel 5 pages #}
 			{% if program_gallery_dir %}
 			{% set program_gallery = program_gallery_dir | dirImages %}
 			{% endif %}
@@ -110,7 +110,6 @@ title: "{{ title }}"
 			{% if program_gallery and program_gallery | length %} 
 			<div class="mt-10 relative overflow-hidden">
 				<div class="overflow-hidden">
-					<!-- Track: no overflow hidden here -->
 					<div id="progTrack" class="flex gap-3 transition-transform duration-500 ease-out will-change-transform">
 						{% for img in program_gallery %}
 						<button
@@ -152,7 +151,7 @@ title: "{{ title }}"
 	</section>
 	
 	
-	{# ===================== EN IMAGES (GRILLE — pas de carrousel) ===================== #}
+	{# ===================== EN IMAGES ===================== #}
 	{% if gallery_photos_dir %}
 	{% set gallery_photos = gallery_photos_dir | dirImages %}
 	{% endif %}
@@ -174,7 +173,7 @@ title: "{{ title }}"
 	{% endif %}
 	
 	
-	{# ===================== ENREGISTREMENTS (OPTIONNEL) ===================== #}
+	{# ===================== ENREGISTREMENTS  ===================== #}
 	{% if recordings and recordings | length %}
 	<section class="text-white py-12">
 		<div class="max-w-6xl mx-auto px-4">
@@ -217,7 +216,7 @@ title: "{{ title }}"
 		</div>
 	</div>
 	
-</div> {# fin wrapper gradient #}
+</div>
 
 
 {# ===================== JS : carrousel + grille + lightbox ===================== #}
@@ -266,13 +265,10 @@ title: "{{ title }}"
 		prev.addEventListener('click', () => { index--; update(); });
 		next.addEventListener('click', () => { index++; update(); });
 		
-		// Recalcule tout au resize (les offsetLeft changent avec les breakpoints)
+		// Recalcule tout au resize
 		window.addEventListener('resize', () => {
-			// force un “alignement” sur le premier visible après resize
 			index = Math.min(index, Math.max(0, items.length - visibleCount()));
-			// petite astuce: reset transform avant de relire les positions
 			track.style.transform = 'translateX(0)';
-			// reflow puis update
 			requestAnimationFrame(update);
 		});
 		
@@ -281,7 +277,7 @@ title: "{{ title }}"
 		track.style.transition = 'transform 500ms ease-out';
 		update();
 		
-		/* ---------------- LIGHTBOX (générique) ---------------- */
+		/* ---------------- LIGHTBOX ---------------- */
 		const lb      = document.getElementById('lightbox');
 		const lbImg   = document.getElementById('lbImg');
 		const lbClose = document.getElementById('lbClose');

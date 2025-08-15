@@ -24,7 +24,7 @@ module.exports = function (eleventyConfig) {
 		.sort((a,b) => new Date(b.data.date) - new Date(a.data.date));
 	});
 	
-	// Séparation à venir / passés selon toutes les dates
+	// Ensemble des concerts à venir
 	eleventyConfig.addCollection("concertsUpcoming", api => {
 		const now = new Date();
 		return api.getFilteredByGlob("src/concerts/*.md")
@@ -46,6 +46,7 @@ module.exports = function (eleventyConfig) {
 		});
 	});
 	
+	// Ensemble des concerts passés
 	eleventyConfig.addCollection("concertsPast", api => {
 		const now = new Date();
 		return api.getFilteredByGlob("src/concerts/*.md")
@@ -65,12 +66,13 @@ module.exports = function (eleventyConfig) {
 		});
 	});
 	
-	
+	// Ensemble des associés
 	eleventyConfig.addCollection("associes", api =>
 		api.getFilteredByGlob("src/associes/*.md")
 		.sort((a,b) => (a.data.order ?? 0) - (b.data.order ?? 0))
 	);
 	
+	// Ensemble des choristes
 	eleventyConfig.addCollection("choristes", (api) =>
 		api.getFilteredByGlob("src/choristes/*.md")
 		.sort((a,b) => (a.data.order ?? 999) - (b.data.order ?? 999))
@@ -79,7 +81,6 @@ module.exports = function (eleventyConfig) {
 	// Filtre date: {{ iso | date("EEEE d MMMM yyyy", "fr") }}
 	eleventyConfig.addFilter("date", (iso, format = "DDD", locale = "fr") => {
 		if (!iso) return "";
-		// Accepte ISO, Date, ou timestamp
 		let dt = typeof iso === "string"
 		? DateTime.fromISO(iso, { zone: "local" })
 		: DateTime.fromJSDate(iso, { zone: "local" });
@@ -88,6 +89,7 @@ module.exports = function (eleventyConfig) {
 		return dt.setLocale(locale).toFormat(format);
 	});
 	
+	//Toutes les images d'un dossier
 	eleventyConfig.addFilter("dirImages", (publicDir) => {
 		if (!publicDir || typeof publicDir !== "string") return [];
 		

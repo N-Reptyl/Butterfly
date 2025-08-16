@@ -4,7 +4,7 @@ const path = require("path");
 const Image = require("@11ty/eleventy-img");
 
 const INPUT_DIR = "src";
-const OUTPUT_DIR = "_dist";
+const OUTPUT_DIR = "dist";
 const PUBLIC_DIR = "public"; // <-- tes images sources sont ici
 
 // Convertit une URL publique (/images/xxx.jpg) -> chemin disque (public/images/xxx.jpg)

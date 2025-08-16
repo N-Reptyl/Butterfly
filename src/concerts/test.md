@@ -1,6 +1,6 @@
 ---
 title: "A travers Schubert"
-subtitle: "Programme Schubert"
+subtitle: "Musique romantique germanique"
 image: "/images/concerts/renaissance.jpg"
 excerpt: "Un voyage à travers la vie de Schubert et ses élans schubertien…"
 dates:

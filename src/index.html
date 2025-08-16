@@ -2,22 +2,31 @@
 title: Accueil
 layout: layouts/base.njk
 ---
-
+<style>
+  @media (min-width: 768px) {
+  .pres {
+    max-width: 80%;
+  }
+}
+</style>
 <!-- CAROUSEL -->
 <section class="relative w-full h-[420px] md:h-[560px] lg:h-[620px] overflow-hidden">
   <!-- Slides wrapper -->
   <div id="heroSlides" class="flex w-full h-full transition-transform duration-700 ease-in-out">
     <!-- Slide 1 -->
     <div class="slide relative w-full h-full flex-shrink-0">
-      <img src="/images/slide1.png" alt="Butterfly - photo 1"
+      <img src="/images/slide1.jpg" alt="Butterfly - photo 1"
            class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-black/45"></div>
       <div class="absolute inset-0 max-w-6xl mx-auto px-4 flex flex-col justify-center">
-        <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-4">BUTTERFLY</h2>
-        <p class="text-white/90 text-sm md:text-base max-w-xl mb-6">
-          Chœur de chambre.
+        <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-1">RECRUTEMENTS</h2>
+        <p class="text-white/90 text-1xl md:text-2xl font-extrabold drop-shadow max-w-xl mb-6">
+          SAISON 2025-2026
         </p>
-        <a href="/le-choeur/" class="w-fit inline-block bg-primary hover:bg-primary_hover text-white font-semibold px-5 py-2 rounded shadow">
+        <p class="text-white/90 text-base md:text-xl max-w-xl mb-6">
+          Le choeur de chambre Butterfly recrute dans tous les pupitres !
+        </p>
+        <a href="/infos-pratiques/" class="w-fit inline-block bg-primary hover:bg-primary_hover text-white font-semibold px-5 py-2 rounded shadow">
           En savoir plus
         </a>
       </div>
@@ -29,11 +38,14 @@ layout: layouts/base.njk
            class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-black/45"></div>
       <div class="absolute inset-0 max-w-6xl mx-auto px-4 flex flex-col justify-center">
-        <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-4">Concerts</h2>
-        <p class="text-white/90 text-sm md:text-base max-w-xl mb-6">
-          Prochaines dates à Toulouse et alentours.
+        <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-1">BUTTERFLY</h2>
+        <p class="text-white/90 text-1xl md:text-2xl font-extrabold drop-shadow max-w-xl mb-6">
+          UN PROJET COLLECTIF
         </p>
-        <a href="/concerts/" class="w-fit inline-block bg-primary hover:bg-primary_hover text-white font-semibold px-5 py-2 rounded shadow">
+        <p class="text-white/90 text-base md:text-xl max-w-xl mb-6">
+          Des chanteurs réunis autour de grandes œuvres vocales.
+        </p>
+        <a href="/le-choeur/" class="w-fit inline-block bg-primary hover:bg-primary_hover text-white font-semibold px-5 py-2 rounded shadow">
           En savoir plus
         </a>
       </div>
@@ -45,9 +57,12 @@ layout: layouts/base.njk
            class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-black/45"></div>
       <div class="absolute inset-0 max-w-6xl mx-auto px-4 flex flex-col justify-center">
-        <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-4">Le Chef</h2>
-        <p class="text-white/90 text-sm md:text-base max-w-xl mb-6">
-          Direction artistique et projet musical.
+        <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-1">LE CHEF</h2>
+        <p class="text-white/90 text-1xl md:text-2xl font-extrabold drop-shadow max-w-xl mb-6">
+          UNE VISION MUSICALE
+        </p>
+        <p class="text-white/90 text-base md:text-xl max-w-full mb-6">
+          Sous la direction de Nathan Gardes, Butterfly déploie un projet musical exigeant et inspiré.
         </p>
         <a href="/le-chef/" class="w-fit inline-block bg-primary hover:bg-primary text-white font-semibold px-5 py-2 rounded shadow">
           En savoir plus
@@ -73,6 +88,76 @@ layout: layouts/base.njk
     <button class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white/40 ring-1 ring-white/50"></button>
   </div>
 </section>
+
+<!-- SECTION 2 — Édito saison + CTA (mise en page comme le mock) -->
+<section class="bg-[#fffff6] text-dark py-16">
+  <div class="pres mx-auto px-4">
+    <div class="md:px-10 relative">
+
+      {# Ruban titre (devant, légèrement au-dessus de la carte) #}
+      <div class="relative md:absolute mb-4 z-30 md:-top-5 md:left-4">
+        <span class="inline-block bg-secondary text-white font-bold text-sm md:text-base px-4 py-2 shadow">
+          Nos événements pour la saison 2025-2026
+        </span>
+      </div>
+
+      {# Rectangle décalé derrière #}
+      <div
+        class="hidden md:block absolute z-10
+               right-[8%] top-[96px] w-[71%] h-[87%]
+               bg-secondary/60">
+      </div>
+
+      {# Carte principale (devant) #}
+      <article
+        class="relative z-20 bg-primary text-white
+               max-w-[860px] md:max-w-[840px]
+               px-6 py-7 md:px-10 md:py-10">
+
+        {# Traits d’angle décoratifs (haut-droit / bas-gauche) #}
+        <span class="pointer-events-none absolute -top-2 -right-2 h-[4px] w-24 bg-primary"></span>
+        <span class="pointer-events-none absolute -top-2 -right-2 h-24 w-[4px] bg-primary"></span>
+        <span class="pointer-events-none absolute -bottom-2 -left-2 h-[4px] w-24 bg-primary"></span>
+        <span class="pointer-events-none absolute -bottom-2 -left-2 h-24 w-[4px] bg-primary"></span>
+
+        <h3 class="text-base md:text-2xl font-extrabold mb-3">
+          Partagez l’aventure Butterfly, au cœur du chant choral !
+        </h3>
+
+        <div class="space-y-4 text-white/95 text-justify leading-relaxed">
+          <p>
+            La saison 2024-2025 a vu le chœur de chambre Butterfly s’illustrer sur la scène toulousaine avec trois concerts
+            qui ont marqué les esprits. Ces moments ont marqué une première saison riche en émotions et en rencontres avec le public.
+            Chaque rendez-vous a été l’occasion d’offrir une expérience musicale vibrante et de partager l’énergie du chœur,
+            dans des parenthèses de musique intenses et chaleureuses.
+          </p>
+          <p>
+            Portés par cet élan, Butterfly se tourne désormais vers de nouveaux horizons. Le chœur de chambre prépare la saison 2025-2026
+            avec enthousiasme, grâce à un projet ambitieux consacré à Franz Schubert. À travers ces œuvres, les choristes invitent le public à un
+            voyage musical retraçant une évolution, de ses premiers élans de jeune compositeur à la profondeur de sa maturité. Un voyage qui mettra
+            en lumière autant l’homme que le musicien, et qui promet de faire résonner toute la richesse expressive de son univers.
+          </p>
+          <p>
+            Butterfly, c’est avant tout une aventure humaine et collective. Si vous aimez chanter et souhaitez rejoindre le projet,
+            n’hésitez pas à tenter l’audition et à partager cette expérience avec nous.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-6">
+          <a href="/infos-pratiques/#recrutement"
+             class="inline-flex items-center gap-2 bg-white hover:bg-secondary_hover text-primary font-semibold px-5 py-2 rounded shadow">
+            Nous rejoindre
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 
 <script>
   (function () {

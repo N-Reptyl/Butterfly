@@ -1,5 +1,5 @@
 ---
-title: "De la Reanaissance au Baroque"
+title: "De la Renaissance au Baroque"
 subtitle: "Voyage musical à travers l’Europe ancienne"
 description: "Plongez au cœur des sonorités de la Renaissance et du Baroque avec un programme qui vous fera voyager à travers l’Europe ancienne.
 
@@ -32,4 +32,3 @@ program_gallery_dir: "/images/concerts/renaissance/programme"
 gallery_photos_dir: "/images/concerts/renaissance/galerie"
 program_pdf : "/docs/concerts/renaissance/note.pdf"
 ---
-Bla bla

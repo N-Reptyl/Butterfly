@@ -1,6 +1,17 @@
 const { DateTime } = require("luxon");
 const fs = require("fs");
 const path = require("path");
+const Image = require("@11ty/eleventy-img");
+
+const INPUT_DIR = "src";
+const OUTPUT_DIR = "_dist";
+const PUBLIC_DIR = "public"; // <-- tes images sources sont ici
+
+// Convertit une URL publique (/images/xxx.jpg) -> chemin disque (public/images/xxx.jpg)
+function publicUrlToFs(url) {
+  const clean = (url || "").replace(/^\/+/, ""); // enlève le slash initial
+  return path.join(process.cwd(), PUBLIC_DIR, clean);
+}
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ "public/images": "images" });
@@ -113,6 +124,74 @@ module.exports = function (eleventyConfig) {
 			return "/" + path.posix.join(rel.split(path.sep).join("/"), file);
 		});
 	});
+
+	// <picture> responsive à partir d’une URL publique (/images/...)
+  eleventyConfig.addNunjucksAsyncShortcode(
+    "imagePublic",
+    async function (publicUrl, alt = "", {
+      widths = [320, 640, 960, 1280, 1600],
+      formats = ["avif", "webp", "jpeg"],
+      sizes = "(min-width: 1024px) 800px, 100vw",
+      className = ""
+    } = {}) {
+
+      const srcFs = publicUrlToFs(publicUrl);
+      if (!fs.existsSync(srcFs)) {
+        console.warn(`[imagePublic] Fichier introuvable: ${srcFs}`);
+        return `<img src="${publicUrl}" alt="${alt}" class="${className}">`; // fallback
+      }
+
+      const metadata = await Image(srcFs, {
+        widths,
+        formats,
+        outputDir: `./${OUTPUT_DIR}/images/optimized`,
+        urlPath: "/images/optimized",
+        sharpWebpOptions: { quality: 80 },
+        sharpAvifOptions: { quality: 65 },
+        sharpJpegOptions: { quality: 85, mozjpeg: true }
+      });
+
+      const attrs = { alt, sizes, loading: "lazy", decoding: "async", class: className };
+      return Image.generateHTML(metadata, attrs, { whitespaceMode: "inline" });
+    }
+  );
+
+  // Spécial galerie : miniature optimisée + lien vers l’ORIGINAL (public) pour ta lightbox
+  eleventyConfig.addNunjucksAsyncShortcode(
+    "galleryImgPublic",
+    async function (publicUrl, alt = "", {
+      widths = [320, 640, 960],
+      formats = ["avif", "webp", "jpeg"],
+      sizes = "(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw",
+      className = "aspect-[4/3] w-full object-cover rounded-md ring-1 ring-black/5 shadow-sm hover:opacity-90",
+      wrapperClass = "lb-trigger focus:outline-none"
+    } = {}) {
+
+      const srcFs = publicUrlToFs(publicUrl);
+      if (!fs.existsSync(srcFs)) {
+        console.warn(`[galleryImgPublic] Fichier introuvable: ${srcFs}`);
+        return `<button class="${wrapperClass}" data-src="${publicUrl}" aria-label="${alt}">
+                  <img src="${publicUrl}" alt="${alt}" class="${className}">
+                </button>`;
+      }
+
+      const metadata = await Image(srcFs, {
+        widths,
+        formats,
+        outputDir: `./${OUTPUT_DIR}/images/optimized`,
+        urlPath: "/images/optimized",
+        sharpWebpOptions: { quality: 80 },
+        sharpAvifOptions: { quality: 65 },
+        sharpJpegOptions: { quality: 85, mozjpeg: true }
+      });
+
+      const attrs = { alt, sizes, loading: "lazy", decoding: "async", class: className };
+      const picture = Image.generateHTML(metadata, attrs, { whitespaceMode: "inline" });
+
+      // data-src = ORIGINAL (servi tel quel depuis public/)
+      return `<button class="${wrapperClass}" data-src="${publicUrl}" aria-label="${alt}">${picture}</button>`;
+    }
+  );
 	
 	eleventyConfig.addPassthroughCopy({ "src/images": "images" });
 	eleventyConfig.addPassthroughCopy({ "src/files": "files" });

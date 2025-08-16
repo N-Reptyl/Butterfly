@@ -35,7 +35,7 @@ layout: layouts/base.njk
 				<!-- Image -->
 				<figure class="md:col-span-4 relative">
 					<div class="relative overflow-hidden ring-1 ring-white/20 shadow-lg bg-white/5" style="padding-top: 141.4%;">
-						<img src="{{ next.data.image }}" alt="{{ next.data.title }}" class="absolute inset-0 w-full h-full object-cover">
+						{% imagePublic next.data.image, next.data.title, { className: "absolute inset-0 w-full h-full object-cover" } %}
 					</div>
 					<!-- Filets décoratifs gauche -->
 					<span class="hidden md:block absolute -left-6 top-16 h-[60%] w-px bg-white/20"></span>

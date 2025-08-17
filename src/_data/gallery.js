@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Dossier source des images dans ton repo
-const SRC_DIR = path.join(process.cwd(), "src", "images", "galerie");
+const SRC_DIR = path.join(process.cwd(), "public", "images", "galerie");
 
 // extensions autorisées
 const exts = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);

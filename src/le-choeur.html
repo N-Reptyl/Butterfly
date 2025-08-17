@@ -7,7 +7,7 @@ layout: layouts/base.njk
 <section class="bg-hero-gradient text-white py-10 px-4">
   <div class="mt-10 max-w-6xl mx-auto">
     <!-- Titre -->
-    <div class="flex justify-center">
+    <div class="reveal reveal-left flex justify-center">
       <div class="inline-flex flex-col items-center gap-2 mb-8">
         <span class="h-[3px] w-full mt-3 bg-white/80"></span>
         <h2 class="text-2xl md:text-3xl font-extrabold tracking-wide uppercase text-center px-8 py-1 bg-white/10 ring-1 ring-white/25">
@@ -28,7 +28,7 @@ layout: layouts/base.njk
           <span class="pointer-events-none absolute -bottom-2 -left-2 h-1 w-20 bg-white"></span>
           <span class="pointer-events-none absolute -bottom-2 -left-2 h-20 w-1 bg-white"></span>
 
-          <div class="text-[15.5px] leading-relaxed text-justify space-y-4">
+          <div class="reveal reveal-right text-[15.5px] leading-relaxed text-justify space-y-4">
             <p>L’ensemble vocal Butterfly est né d’une rencontre entre des chanteurs expérimentés et un chef passionné. En quelques mois seulement, se sont réunis 13 choristes, donnant ainsi naissance à un chœur de chambre qui se distingue par son énergie et sa cohésion.</p>
             <p>Chaque semaine, ils se retrouvent pour unir leur voix avec enthousiasme sous la direction de leur chef Nathan Gardes.</p>
           </div>
@@ -38,8 +38,8 @@ layout: layouts/base.njk
       <!-- Image (à droite) -->
       <figure class="md:col-start-5 md:col-span-8 md:row-start-1 relative">
         <div class="rounded-xl overflow-hidden ring-1 ring-white/20 shadow-lg">
-          <img src="/images/choeur.jpg" alt="Le chœur de chambre Butterfly"
-               class="w-full h-[380px] md:h-[550px] object-cover" />
+          {% imagePublic "/images/choeur.jpg", "Le chœur de chambre Butterfly", { className: "w-full h-[380px] md:h-[560px] object-cover" } %}
+
         </div>
 
         <!-- filets décoratifs -->
@@ -51,7 +51,7 @@ layout: layouts/base.njk
 </section>
 
 <!-- LES CHORISTES -->
-<section class="bg-[url(/images/fond.png)] bg-cover bg-no-repeat text-dark py-14">
+<section class="bg-whitish bg-cover bg-no-repeat text-dark py-14">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Titre -->
     <div class="flex justify-center">
@@ -65,27 +65,58 @@ layout: layouts/base.njk
     </div>
 
     <!-- Grille -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mx-10 gap-6">
-      {% for c in collections.choristes %}
-      <div class="bg-white rounded-xl ring-1 ring-black/5 shadow-sm overflow-hidden">
-        <div class="aspect-[4/5] bg-[#e9eeec] flex items-center justify-center overflow-hidden">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mx-10 gap-8">
+  {% for c in collections.choristes %}
+    {% set v = (c.data.voice or '' ) | lower %}
+    {% if "soprano" in v %}
+      {% set band = "bg-rose-600" %}
+    {% elif "alto" in v %}
+      {% set band = "bg-amber-600" %}
+    {% elif "ténor" in v or "tenor" in v %}
+      {% set band = "bg-sky-600" %}
+    {% elif "basse" in v %}
+      {% set band = "bg-emerald-700" %}
+    {% else %}
+      {% set band = "bg-slate-600" %}
+    {% endif %}
+
+    <div class="relative group">
+      {# --- punaise + ficelle --- #}
+      <div class="absolute -top-6 left-1/2 -translate-x-1/2 flex flex-col items-center z-30">
+        <div class="w-[2px] h-4 bg-black/40"></div>
+        <div class="w-4 h-4 rounded-full bg-black shadow-md ring-2 ring-white"></div>
+      </div>
+
+      {# --- cadre photo --- #}
+      <div class="bg-white rounded-lg overflow-hidden shadow-md relative ring-1 ring-black/10 transition-transform group-hover:-translate-y-1">
+        <div class="aspect-[4/5] bg-[#f9faf9] overflow-hidden">
           {% if c.data.photo %}
-            <img src="{{ c.data.photo }}" alt="{{ c.data.name }}"
-                 class="w-full h-full object-cover" />
+            <img src="{{ c.data.photo }}" alt="{{ c.data.name }}" class="w-full h-full object-cover" />
           {% else %}
-            <!-- placeholder -->
             <div class="w-full h-full grid place-items-center text-sm text-black/40">Photo</div>
           {% endif %}
         </div>
-        <div class="px-3 pt-3 pb-4 text-center">
-          <p class="font-semibold leading-tight">{{ c.data.name }}</p>
-          {% if c.data.voice %}
-            <!-- <p class="text-xs text-black/60 mt-1">{{ c.data.voice }}</p> -->
-          {% endif %}
+
+        {# --- bandeau pupitre en bas --- #}
+        {% if c.data.voice %}
+        <div class="absolute bottom-0 left-0 right-0">
+          <div class="{{ band }} text-white text-xs md:text-sm font-semibold text-center py-1.5">
+            {{ c.data.voice }}
+          </div>
         </div>
+        {% endif %}
       </div>
-      {% endfor %}
+
+      {# --- nom du choriste en dessous --- #}
+      <div class="mt-3 text-center">
+        <p class="font-semibold leading-tight text-slate-900 text-base md:text-lg">
+          {{ c.data.name }}
+        </p>
+      </div>
     </div>
+  {% endfor %}
+</div>
+
   </div>
 </section>
 

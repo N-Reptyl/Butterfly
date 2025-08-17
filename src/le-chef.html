@@ -7,7 +7,7 @@ layout: layouts/base.njk
 	<div class="max-w-6xl mt-10 mx-auto">
 		
 		<!-- Titre -->
-		<div class="flex justify-center">
+		<div class="reveal reveal-right delay-2000 flex justify-center">
 			<div class="inline-flex flex-col items-center gap-2 mb-8">
 				<span class="h-[3px] w-full mt-3 bg-white/80"></span>
 				<h2 class="text-2xl md:text-3xl font-extrabold tracking-wide uppercase text-center px-8 py-1 bg-white/10 ring-1 ring-white/25">
@@ -22,7 +22,7 @@ layout: layouts/base.njk
 			
 			<!-- Image -->
 			<figure class="md:col-start-1 md:col-span-7 md:row-start-1 relative">
-				<div class="rounded-xl overflow-hidden ring-1 ring-white/20 shadow-lg">
+				<div class="reveal reveal-fade rounded-xl overflow-hidden ring-1 ring-white/20 shadow-lg">
 					<img src="/images/chef.jpg" alt="Nathan Gardes, directeur artistique"
 					class="w-full h-[380px] md:h-[560px] object-cover" />
 				</div>
@@ -44,7 +44,7 @@ layout: layouts/base.njk
 					<span class="pointer-events-none absolute -bottom-2 -left-2 h-1 w-20 bg-white"></span>
 					<span class="pointer-events-none absolute -bottom-2 -left-2 h-20 w-1 bg-white"></span>
 					
-					<div class="text-justify space-y-5 text-[15.5px] leading-relaxed">
+					<div class="reveal reveal-left text-justify space-y-5 text-[15.5px] leading-relaxed">
 						<p>Pianiste de formation, Nathan Gardes témoigne également d’une grande appétence pour la musique vocale et chorale.</p>
 						<p>Depuis 2018, il prête sa voix successivement au Chœur Étudiant de Toulouse, à la Schola Cantorum de la Basilique Saint-Sernin, à la Maîtrise de Toulouse et encore d’autres ensembles. Pendant un an, il collabore avec le chœur de femmes Arpegia Vox en tant qu’accompagnateur.</p>
 						<p>En tant qu’instrumentiste, il étudie le piano auprès de François-Michel Rignol et l’accompagnement auprès d’Emilie Carcy au sein du Conservatoire à Rayonnement Régional de Perpignan. Il joue également dans le festival International de Piano En Blanc et Noir dans le village de Lagrasse. Il co-fonde un ensemble avec des chanteurs chanteurs lyriques de la région, Quadrivoces.</p>
@@ -59,11 +59,11 @@ layout: layouts/base.njk
 </section>
 
 <!-- NOS MUSICIENS ASSOCIÉS -->
-<section class="bg-[#fffff6] text-dark py-14">
+<section class="bg-whitish text-dark py-14">
   <div class="max-w-6xl mx-auto px-4">
 
     <!-- Titre -->
-    <div class="flex justify-center">
+    <div class="reveal reveal-left flex justify-center">
       <div class="inline-flex flex-col items-center gap-2 mb-8">
         <span class="h-[3px] w-full bg-dark/20"></span>
         <h2 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-8 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
@@ -75,7 +75,7 @@ layout: layouts/base.njk
 
     <!-- Carousel -->
     <div id="assocCarousel" class="relative">
-      <div class="overflow-hidden rounded-lg ring-1 ring-black/5 bg-[#fffff6]">
+      <div class="overflow-hidden rounded-lg ring-1 ring-black/5 bg-whitish">
         <div id="assocTrack" class="flex transition-transform duration-700 ease-in-out">
           {% for a in collections.associes %}
           <!-- Slide -->
@@ -93,14 +93,14 @@ layout: layouts/base.njk
                   <span class="pointer-events-none absolute -bottom-2 -left-2 h-24 w-[4px] bg-[#418a7a]"></span>
 
                   <h3 class="text-2xl md:text-3xl font-extrabold mb-3">{{ a.data.name }}</h3>
-                  <div class="prose prose-invert max-w-none text-[15.5px] leading-relaxed">
+                  <div class="reveal reveal-right prose prose-invert max-w-none text-[15.5px] leading-relaxed">
                     {{ a.templateContent | safe }}
                   </div>
                 </div>
               </div>
 
               <!-- Image (à droite) -->
-              <div class="md:row-start-1 md:col-start-7 md:col-span-6 relative">
+              <div class="reveal reveal-fade md:row-start-1 md:col-start-7 md:col-span-6 relative">
                 <div class="rounded-xl overflow-hidden ring-1 ring-black/10 shadow">
                   <img src="{{ a.data.image }}" alt="{{ a.data.name }}"
                        class="w-full h-[320px] md:h-[460px] object-cover" />

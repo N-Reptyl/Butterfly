@@ -2,11 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tes styles custom ici au besoin */
 :root {
   --color-primary: theme('colors.primary');
   --color-secondary: theme('colors.secondary');
   --color-accent: theme('colors.accent');
   --color-primary-hover: theme('colors.primary_hover');
   --color-secondary-hover: theme('colors.secondary_hover');
+}
+
+@layer utilities {
+  /* Base state: hidden until revealed */
+  .reveal {
+    opacity: 0;
+    transform: translateY(0);
+    filter: blur(0);
+    transition-property: opacity, transform, filter;
+    transition-duration: var(--reveal-duration, 700ms);
+    transition-timing-function: cubic-bezier(.2,.65,.2,1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform, filter;
+  }
+  .reveal.is-visible { opacity: 1; transform: none; filter: none; }
+
+  /* Variants (pick one) */
+  .reveal-up   { transform: translateY(16px); }
+  .reveal-down { transform: translateY(-16px); }
+  .reveal-left { transform: translateX(24px); }
+  .reveal-right{ transform: translateX(-24px); }
+  .reveal-zoom { transform: scale(.96); filter: blur(2px); }
+  .reveal-fade { opacity: 0; } /* just fade */
+
+  /* Small helper delays (optional) */
+  .delay-100{ --reveal-delay:100ms } .delay-200{ --reveal-delay:200ms }
+  .delay-300{ --reveal-delay:300ms } .delay-500{ --reveal-delay:500ms }
 }

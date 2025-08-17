@@ -9,6 +9,43 @@
 		<meta name="description" content="Chœur de chambre Butterfly, Toulouse. Concerts, direction artistique, soutien." />
 		<link rel="stylesheet" href="/assets/styles.css" />
 	</head>
+	<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var els = Array.from(document.querySelectorAll('.reveal'));
+  if (!els.length) return;
+
+  var reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      const repeat = el.hasAttribute('data-reveal-repeat'); // ← opt-in pour rejouer
+
+      if (entry.isIntersecting) {
+        const d = el.getAttribute('data-reveal-delay');
+        const dur = el.getAttribute('data-reveal-duration');
+        if (d)   el.style.setProperty('--reveal-delay', d + 'ms');
+        if (dur) el.style.setProperty('--reveal-duration', dur + 'ms');
+
+        el.classList.add('is-visible');
+
+        // ✅ par défaut: une seule fois
+        if (!repeat) io.unobserve(el);
+      } else if (repeat) {
+        // si on a demandé repeat, on enlève la classe quand ça sort du viewport
+        el.classList.remove('is-visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+
+  els.forEach(el => io.observe(el));
+});
+</script>
+
 	<body class="text-white font-sans bg-cover bg-center">
 		{% include "../components/header.njk" %}
 		<main class="">

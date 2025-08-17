@@ -107,13 +107,14 @@ title: "{{ title }}"
 				<div class="overflow-hidden">
 					<div id="progTrack" class="flex gap-3 transition-transform duration-500 ease-out will-change-transform">
 						{% for img in program_gallery %}
-						{% galleryImgPublic img, "Note de programme — page " + loop.index, {
-							className: "aspect-[210/297] w-full object-cover rounded-md ring-1 ring-black/5 shadow-sm group-hover:opacity-90",
-							widths: [320, 640, 960],
-							sizes: "(min-width:1024px) 20vw, (min-width:768px) 33vw, 50vw"
-						} %}
+						<button
+						class="lb-trigger group relative w-full sm:w-1/2 md:w-[33.3333%] lg:w-[19%] shrink-0 focus:outline-none"
+						data-src="{{ img }}" aria-label="Voir la page {{ loop.index }} en grand">
+							<img src="{{ img }}" alt="Note de programme — page {{ loop.index }}"
+							class="aspect-[210/297] w-full object-cover rounded-md ring-1 ring-black/5 shadow-sm group-hover:opacity-90"
+							/>
+						</button>
 						{% endfor %}
-
 					</div>
 				</div>
 				

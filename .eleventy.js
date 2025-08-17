@@ -156,43 +156,6 @@ module.exports = function (eleventyConfig) {
     }
   );
 
-  // Spécial galerie : miniature optimisée + lien vers l’ORIGINAL (public) pour ta lightbox
-  eleventyConfig.addNunjucksAsyncShortcode(
-    "galleryImgPublic",
-    async function (publicUrl, alt = "", {
-      widths = [320, 640, 960],
-      formats = ["avif", "webp", "jpeg"],
-      sizes = "(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw",
-      className = "aspect-[4/3] w-full object-cover rounded-md ring-1 ring-black/5 shadow-sm hover:opacity-90",
-      wrapperClass = "lb-trigger focus:outline-none"
-    } = {}) {
-
-      const srcFs = publicUrlToFs(publicUrl);
-      if (!fs.existsSync(srcFs)) {
-        console.warn(`[galleryImgPublic] Fichier introuvable: ${srcFs}`);
-        return `<button class="${wrapperClass}" data-src="${publicUrl}" aria-label="${alt}">
-                  <img src="${publicUrl}" alt="${alt}" class="${className}">
-                </button>`;
-      }
-
-      const metadata = await Image(srcFs, {
-        widths,
-        formats,
-        outputDir: `./${OUTPUT_DIR}/images/optimized`,
-        urlPath: "/images/optimized",
-        sharpWebpOptions: { quality: 80 },
-        sharpAvifOptions: { quality: 65 },
-        sharpJpegOptions: { quality: 85, mozjpeg: true }
-      });
-
-      const attrs = { alt, sizes, loading: "lazy", decoding: "async", class: className };
-      const picture = Image.generateHTML(metadata, attrs, { whitespaceMode: "inline" });
-
-      // data-src = ORIGINAL (servi tel quel depuis public/)
-      return `<button class="${wrapperClass}" data-src="${publicUrl}" aria-label="${alt}">${picture}</button>`;
-    }
-  );
-	
 	eleventyConfig.addPassthroughCopy({ "src/images": "images" });
 	eleventyConfig.addPassthroughCopy({ "src/files": "files" });
 	return {

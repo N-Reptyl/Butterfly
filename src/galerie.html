@@ -4,9 +4,9 @@ layout: layouts/base.njk
 ---
 
 <!-- GALERIE -->
-<section class="bg-[#fefefe] text-dark py-14">
+<section class="bg-whitish text-dark py-14">
   <!-- Titre -->
-  <div class="flex mt-10 justify-center">
+  <div class="reveal reveal-down flex mt-10 justify-center">
     <div class="inline-flex flex-col items-center gap-2 mb-8">
       <span class="h-[3px] w-full bg-dark/20"></span>
       <h1 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-8 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
@@ -20,7 +20,7 @@ layout: layouts/base.njk
   <div class="w-full">
     <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-0">
       {% for img in gallery %}
-      <button class="group relative aspect-square overflow-hidden focus:outline-none" data-index="{{ loop.index0 }}">
+      <button class="reveal reveal-up group relative aspect-square overflow-hidden focus:outline-none" data-index="{{ loop.index0 }}">
         <img src="{{ img.src }}" alt="{{ img.alt }}"
              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
         <!-- overlay léger au hover -->

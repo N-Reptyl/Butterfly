@@ -10,6 +10,7 @@ export default {
 		primary_hover: '#477268',
         secondary: '#3a7f6f',   // Vert clair (accents, dégradés)
 		secondary_hover: '#3f937f',
+		whitish: '#fffff6',
         accent: '#183831',      // Vert très sombre (titres, textes)
         light: '#ffffff',       // Blanc (textes clairs)
         dark: '#0B1D3B',        // Bleu nuit utilisé pour ombres / textes

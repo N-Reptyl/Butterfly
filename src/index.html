@@ -170,14 +170,14 @@ layout: layouts/base.njk
 {% set _photos = (gallery) %}
 
 <section class="bg-hero-gradient py-4">
-  <div class="max-w-6xl mx-auto px-4">
+  <div class="max-w-6xl mx-auto px-1 md:px-4">
     <div class="flex items-center justify-center mb-4 ">
       <span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
       <h2 class="mx-4 text-xl md:text-2xl font-extrabold uppercase tracking-wide">En image</h2>
       <span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
     </div>
 
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-3 gap-1 md:gap-3">
       {% for img in gallery %}
       {% if loop.index0 < 3 %} <div
         class="reveal reveal-up aspect-[4/3] overflow-hidden rounded-md ring-1 ring-black/5 shadow-sm hover:opacity-90">
@@ -185,8 +185,7 @@ layout: layouts/base.njk
     </div>
     {% endif %}
     {% endfor %}
-
-  </div>
+    </div>
 
   <div class="mt-4 text-center">
     <a href="/galerie/"

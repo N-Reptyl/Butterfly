@@ -4,10 +4,10 @@ layout: layouts/base.njk
 ---
 <style>
   @media (min-width: 768px) {
-  .pres {
-    max-width: 80%;
+    .pres {
+      max-width: 80%;
+    }
   }
-}
 </style>
 <!-- CAROUSEL -->
 <section class="reveal reveal-fade relative w-full h-[420px] md:h-[560px] lg:h-[620px] overflow-hidden">
@@ -25,7 +25,8 @@ layout: layouts/base.njk
         <p class="text-white/90 text-base md:text-xl w-80 md:w-full mb-6">
           Le choeur de chambre Butterfly recrute dans tous les pupitres !
         </p>
-        <a href="/infos-pratiques/" class=" w-fit inline-block bg-primary hover:bg-primary_hover text-white font-semibold px-5 py-2 rounded shadow">
+        <a href="/infos-pratiques/"
+          class=" w-fit inline-block bg-primary hover:bg-primary_hover text-white font-semibold px-5 py-2 rounded shadow">
           En savoir plus
         </a>
       </div>
@@ -33,7 +34,8 @@ layout: layouts/base.njk
 
     <!-- Slide 2 -->
     <div class="slide relative w-full h-full flex-shrink-0">
-      {% imagePublic "/images/slide2.jpg", "Butterfly - choeur de chambre", { className: "w-full h-full object-cover" } %}
+      {% imagePublic "/images/slide2.jpg", "Butterfly - choeur de chambre", { className: "w-full h-full object-cover" }
+      %}
       <div class="absolute inset-0 bg-black/45"></div>
       <div class="absolute inset-0 max-w-6xl mx-auto px-4 flex flex-col justify-center">
         <h2 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow mb-1">BUTTERFLY</h2>
@@ -43,7 +45,8 @@ layout: layouts/base.njk
         <p class="text-white/90 text-base md:text-xl w-80 md:w-full mb-6">
           Des chanteurs réunis autour de grandes œuvres vocales.
         </p>
-        <a href="/le-choeur/" class="w-fit inline-block bg-primary hover:bg-primary_hover text-white font-semibold px-5 py-2 rounded shadow">
+        <a href="/le-choeur/"
+          class="w-fit inline-block bg-primary hover:bg-primary_hover text-white font-semibold px-5 py-2 rounded shadow">
           En savoir plus
         </a>
       </div>
@@ -61,7 +64,8 @@ layout: layouts/base.njk
         <p class="text-white/90 text-base md:text-xl w-80 md:w-full mb-6">
           Sous la direction de Nathan Gardes, Butterfly déploie un projet musical exigeant et inspiré.
         </p>
-        <a href="/le-chef/" class="w-fit inline-block bg-primary hover:bg-primary text-white font-semibold px-5 py-2 rounded shadow">
+        <a href="/le-chef/"
+          class="w-fit inline-block bg-primary hover:bg-primary text-white font-semibold px-5 py-2 rounded shadow">
           En savoir plus
         </a>
       </div>
@@ -69,12 +73,12 @@ layout: layouts/base.njk
   </div>
 
   <!-- Flèche droite -->
-  <button id="heroNext"
-          class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 border border-white/40
+  <button id="heroNext" class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 border border-white/40
                  backdrop-blur rounded-md p-2 md:p-3 text-white shadow focus:outline-none">
     <!-- icône chevron -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24"
+      stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
     </svg>
   </button>
 
@@ -99,15 +103,13 @@ layout: layouts/base.njk
       </div>
 
       {# Rectangle décalé derrière #}
-      <div
-        class="hidden md:block absolute z-10
+      <div class="hidden md:block absolute z-10
                right-[8%] top-[96px] w-[71%] h-[87%]
                bg-secondary/60">
       </div>
 
       {# Carte principale (devant) #}
-      <article
-        class="relative z-20 bg-primary text-white
+      <article class="relative z-20 bg-primary text-white
                max-w-[860px] md:max-w-[840px]
                px-6 py-7 md:px-10 md:py-10">
 
@@ -123,19 +125,27 @@ layout: layouts/base.njk
 
         <div class="space-y-4 text-white/95 text-justify leading-relaxed">
           <p>
-            La saison 2024-2025 a vu le chœur de chambre Butterfly s’illustrer sur la scène toulousaine avec trois concerts
-            qui ont marqué les esprits. Ces moments ont marqué une première saison riche en émotions et en rencontres avec le public.
-            Chaque rendez-vous a été l’occasion d’offrir une expérience musicale vibrante et de partager l’énergie du chœur,
+            La saison 2024-2025 a vu le chœur de chambre Butterfly s’illustrer sur la scène toulousaine avec trois
+            concerts
+            qui ont marqué les esprits. Ces moments ont marqué une première saison riche en émotions et en rencontres
+            avec le public.
+            Chaque rendez-vous a été l’occasion d’offrir une expérience musicale vibrante et de partager l’énergie du
+            chœur,
             dans des parenthèses de musique intenses et chaleureuses.
           </p>
           <p>
-            Portés par cet élan, Butterfly se tourne désormais vers de nouveaux horizons. Le chœur de chambre prépare la saison 2025-2026
-            avec enthousiasme, grâce à un projet ambitieux consacré à Franz Schubert. À travers ces œuvres, les choristes invitent le public à un
-            voyage musical retraçant une évolution, de ses premiers élans de jeune compositeur à la profondeur de sa maturité. Un voyage qui mettra
-            en lumière autant l’homme que le musicien, et qui promet de faire résonner toute la richesse expressive de son univers.
+            Portés par cet élan, Butterfly se tourne désormais vers de nouveaux horizons. Le chœur de chambre prépare la
+            saison 2025-2026
+            avec enthousiasme, grâce à un projet ambitieux consacré à Franz Schubert. À travers ces œuvres, les
+            choristes invitent le public à un
+            voyage musical retraçant une évolution, de ses premiers élans de jeune compositeur à la profondeur de sa
+            maturité. Un voyage qui mettra
+            en lumière autant l’homme que le musicien, et qui promet de faire résonner toute la richesse expressive de
+            son univers.
           </p>
           <p>
-            Butterfly, c’est avant tout une aventure humaine et collective. Si vous aimez chanter et souhaitez rejoindre le projet,
+            Butterfly, c’est avant tout une aventure humaine et collective. Si vous aimez chanter et souhaitez rejoindre
+            le projet,
             n’hésitez pas à tenter l’audition et à partager cette expérience avec nous.
           </p>
         </div>
@@ -143,10 +153,10 @@ layout: layouts/base.njk
         <!-- CTA -->
         <div class="mt-6">
           <a href="/infos-pratiques/#recrutement"
-             class="inline-flex items-center gap-2 bg-white hover:bg-secondary_hover text-primary font-semibold px-5 py-2 rounded shadow">
+            class="inline-flex items-center gap-2 bg-white hover:bg-secondary_hover text-primary font-semibold px-5 py-2 rounded shadow">
             Nous rejoindre
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </a>
         </div>
@@ -154,6 +164,42 @@ layout: layouts/base.njk
     </div>
   </div>
 </section>
+
+<!-- SECTION 3 — 3 photos de la galerie + bouton -->
+{% set _fallback = ["/images/galerie/01.jpg","/images/galerie/02.jpg","/images/galerie/03.jpg"] %}
+{% set _photos = (gallery) %}
+
+<section class="bg-hero-gradient py-4">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-center mb-4 ">
+      <span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+      <h2 class="mx-4 text-xl md:text-2xl font-extrabold uppercase tracking-wide">En image</h2>
+      <span class="hidden sm:block h-px w-24 md:w-48 bg-white/30"></span>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3">
+      {% for img in gallery %}
+      {% if loop.index0 < 3 %} <div
+        class="reveal reveal-up aspect-[4/3] overflow-hidden rounded-md ring-1 ring-black/5 shadow-sm hover:opacity-90">
+        {% imagePublic img.src, "Galerie - photo ", {className: "w-full h-full object-cover"} %}
+    </div>
+    {% endif %}
+    {% endfor %}
+
+  </div>
+
+  <div class="mt-4 text-center">
+    <a href="/galerie/"
+      class="inline-flex items-center gap-2 bg-[#c79b6a] text-dark hover:bg-[#d2ab7f] font-semibold px-5 py-2 rounded shadow">
+      Voir plus
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+  </div>
+</section>
+
 
 
 <script>

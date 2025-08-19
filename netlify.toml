@@ -20,9 +20,10 @@
 # Sitemap plugin (simple et fiable)
 [[plugins]]
   package = "@netlify/plugin-sitemap"
-
   [plugins.inputs]
-    buildDir = "dist"
+    baseUrl = "https://choeur-butterfly.com"   # ou https://www.choeur-butterfly.com si c'est ton domaine principal
+    buildDir = "_dist"                         # <-- idem : mets "dist" si besoin
     prettyURLs = true
-    exclude = ["/404.html"]
-    sitemapBaseUrl = "https://choeur-butterfly.com"
+    exclude = [
+      "/404.html"
+    ]

@@ -1,0 +1,37 @@
+{# A inclure dans une page concert après avoir défini : 
+   startDate (ISO, ex: 2025-11-23T20:30:00+01:00), endDate (optionnel),
+   locationName, streetAddress, addressLocality, postalCode, image (ou défaut)
+#}
+{% set site = site or {} %}
+{% set siteUrl = site.url or "" %}
+{% set desc = description or site.defaultDescription %}
+{% set img = image or site.defaultImage %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicEvent",
+  "name": "{{ title }}",
+  "startDate": "{{ startDate }}"{% if endDate %},
+  "endDate": "{{ endDate }}"{% endif %},
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "{{ locationName }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ streetAddress }}",
+      "addressLocality": "{{ addressLocality }}",
+      "postalCode": "{{ postalCode }}",
+      "addressCountry": "FR"
+    }
+  },
+  "image": ["{{ siteUrl }}{{ img }}"],
+  "description": "{{ desc | striptags | replace('"','\"') }}",
+  "organizer": {
+    "@type": "PerformingGroup",
+    "name": "{{ site.name }}",
+    "url": "{{ siteUrl }}"
+  }
+}
+</script>

@@ -1,0 +1,41 @@
+{% set site = site or {} %}
+{% set siteUrl = site.url or "" %}
+{% set pageUrl = siteUrl + (page.url or "/") %}
+{% if title %}
+  {% set titleFull = title + " – " + site.name %}
+{% else %}
+  {% set titleFull = site.name %}
+{% endif %}
+{% set desc = description or site.defaultDescription %}
+{% set ogImage = image or site.defaultImage %}
+
+<link rel="canonical" href="{{ pageUrl }}">
+<meta name="description" content="{{ desc | striptags | truncate(155, true, '') }}">
+
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ titleFull }}">
+<meta property="og:description" content="{{ desc | striptags | truncate(200, true, '') }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ pageUrl }}">
+<meta property="og:image" content="{{ siteUrl + ogImage }}">
+<meta property="og:locale" content="{{ site.locale or 'fr_FR' }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ titleFull }}">
+<meta name="twitter:description" content="{{ desc | striptags | truncate(200, true, '') }}">
+<meta name="twitter:image" content="{{ siteUrl + ogImage }}">
+
+<link rel="alternate" href="{{ pageUrl }}" hreflang="fr-FR">
+<meta name="robots" content="index,follow">
+
+{# Données structurées Organisation (PerformingGroup) #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PerformingGroup",
+  "name": "{{ site.org.legalName }}",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}{{ site.org.logo }}",
+  "sameAs": {{ site.org.sameAs | dump }}
+}
+</script>

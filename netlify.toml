@@ -1,0 +1,28 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "http://choeur-butterfly.com/*"
+  to = "https://choeur-butterfly.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.choeur-butterfly.com/*"
+  to = "https://choeur-butterfly.com/:splat"
+  status = 301
+  force = true
+
+# Sitemap plugin (simple et fiable)
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+  [plugins.inputs]
+    buildDir = "dist"
+    prettyURLs = true
+    exclude = ["/404.html"]
+    sitemapBaseUrl = "https://choeur-butterfly.com"

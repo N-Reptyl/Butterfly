@@ -14,8 +14,7 @@ function publicUrlToFs(url) {
 }
 
 module.exports = function (eleventyConfig) {
-	eleventyConfig.addPassthroughCopy({ "public/images": "images" });
-	eleventyConfig.addPassthroughCopy({ "public/docs": "docs" });
+	eleventyConfig.addPassthroughCopy({ "public": "/" });
 	
 	eleventyConfig.addShortcode("year", () => new Date().getFullYear());
 	
@@ -158,6 +157,7 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addPassthroughCopy({ "src/images": "images" });
 	eleventyConfig.addPassthroughCopy({ "src/files": "files" });
+	eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 	return {
 		dir: {
 			input: "src",

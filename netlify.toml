@@ -30,3 +30,8 @@
       "**/404.html",
       "**/404/index.html"
     ]
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"

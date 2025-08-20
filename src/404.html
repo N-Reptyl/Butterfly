@@ -1,0 +1,84 @@
+---
+title: "Page introuvable"
+permalink: /404.html
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page introuvable – Chœur Butterfly</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body class="bg-[radial-gradient(circle,_#3a7f6f_0%,_#255147_60%)] text-white">
+  <section class="min-h-[70vh] flex items-center">
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+      <!-- Titre -->
+      <div class="">
+        <span class="inline-block bg-white/15 ring-1 ring-white/20 rounded px-3 py-1 text-xs font-semibold tracking-wider">
+          Erreur 404
+        </span>
+        <h1 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
+          Oups… cette page est introuvable.
+        </h1>
+        <p class="mt-3 md:text-lg text-white/90 max-w-2xl">
+          Le lien est peut-être erroné ou la page a été déplacée. Voici quelques pistes utiles :
+        </p>
+      </div>
+
+      <!-- Cartes liens -->
+      <div class="grid md:grid-cols-3 gap-4 mt-10">
+        <a href="/"
+           class="bg-white/10 hover:bg-white/15 ring-1 ring-white/20 rounded-lg p-5 flex items-center justify-between transition">
+          <div>
+            <h2 class="font-bold">Retour à l’accueil</h2>
+            <p class="text-white/80 text-sm mt-1">Explorer les dernières infos</p>
+          </div>
+          <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <a href="/concerts/"
+           class="bg-white/10 hover:bg-white/15 ring-1 ring-white/20 rounded-lg p-5 flex items-center justify-between transition delay-100">
+          <div>
+            <h2 class="font-bold">Voir les concerts</h2>
+            <p class="text-white/80 text-sm mt-1">Dates, lieux et programmes</p>
+          </div>
+          <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <a href="/infos-pratiques/"
+           class="bg-white/10 hover:bg-white/15 ring-1 ring-white/20 rounded-lg p-5 flex items-center justify-between transition delay-200">
+          <div>
+            <h2 class="font-bold">Infos pratiques</h2>
+            <p class="text-white/80 text-sm mt-1">Rejoindre le chœur, contact…</p>
+          </div>
+          <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Boutons -->
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="javascript:history.back()"
+           class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 ring-1 ring-white/20 px-4 py-2 rounded font-semibold">
+          Revenir en arrière
+        </a>
+        <a href="/galerie/"
+           class="inline-flex items-center gap-2 bg-primary hover:bg-primary_hover text-white px-4 py-2 rounded font-semibold shadow ring-1 ring-black/10">
+          Aller à la galerie
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

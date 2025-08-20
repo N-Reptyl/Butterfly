@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://choeur-butterfly.com/sitemap.xml
+
+#V6

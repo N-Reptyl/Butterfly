@@ -2,7 +2,7 @@
   "name": "butterfly-site",
   "version": "1.0.0",
   "scripts": {
-    "clean": "rimraf _dist",
+    "clean": "rimraf dist",
     "dev": "npm-run-all --parallel dev:*",
     "dev:css": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/assets/styles.css --watch",
     "dev:11ty": "eleventy --serve --quiet",

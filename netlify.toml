@@ -25,5 +25,8 @@
     buildDir = "dist"                         # <-- idem : mets "dist" si besoin
     prettyURLs = true
     exclude = [
-      "/404.html"
+      "404.html",
+      "404/index.html",
+      "**/404.html",
+      "**/404/index.html"
     ]

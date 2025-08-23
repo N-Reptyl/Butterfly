@@ -2,7 +2,7 @@
 {% set siteUrl = site.url or "" %}
 {% set pageUrl = siteUrl + (page.url or "/") %}
 {% if title %}
-  {% set titleFull = title + " – " + site.name %}
+  {% set titleFull = site.name + " - " + title %}
 {% else %}
   {% set titleFull = site.name %}
 {% endif %}

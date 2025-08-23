@@ -6,7 +6,7 @@ title: "{{ title }}"
 <div class="bg-hero-gradient">
 	
 	{# ===================== HERO ===================== #}
-	<section class="shadow-2xl relative bg-primary border-b border-white/20 overflow-hidden text-white mb-6">
+	<section class="reveal reveal-down shadow-2xl relative bg-primary border-b border-white/20 overflow-hidden text-white mb-6">
 		<div class="relative z-20 max-w-6xl mx-auto px-4 flex flex-col items-start justify-end pb-8 mt-20">
 			<h1 class="text-3xl md:text-4xl font-extrabold tracking-wide">{{ title }}</h1>
 			{% if subtitle %}<p class="text-white/90 text-lg md:text-xl mt-1">{{ subtitle }}</p>{% endif %}
@@ -28,7 +28,7 @@ title: "{{ title }}"
 	
 	
 	{# ===================== AFFICHE + INFOS ===================== #}
-	<section class="text-white pb-0">
+	<section class="reveal reveal-fade text-white pb-0">
 		<div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-start">
 			
 			{# Affiche à gauche #}
@@ -93,7 +93,7 @@ title: "{{ title }}"
 	
 	
 	{# ===================== NOTE DE PROGRAMME ===================== #}
-	<section class="text-white py-12">
+	<section class="reaveal reveal-up text-white py-12">
 		<div class="max-w-6xl mx-auto px-4">
 			{{ Divider("Note de programme") }}
 			
@@ -151,7 +151,7 @@ title: "{{ title }}"
 	{% set gallery_photos = gallery_photos_dir | dirImages %}
 	{% endif %}
 	{% if gallery_photos and gallery_photos | length %}
-	<section class="text-white pb-12 -mt-2">
+	<section class="reveal reveal-up text-white pb-12 -mt-2">
 		<div class="max-w-6xl mx-auto px-4">
 			{{ Divider("En images") }}
 			

@@ -2,6 +2,7 @@
 title: "Nos concerts & notre répertoire"
 layout: layouts/base.njk
 description: "Retrouvez toutes les dates des concerts du Chœur Butterfly à Toulouse et ailleurs. Programmation, lieux et réservations en un clic."
+image: /images/concerts/renaissance.jpg
 ---
 
 <section class="bg-hero-gradient text-white pt-10">
@@ -74,7 +75,6 @@ description: "Retrouvez toutes les dates des concerts du Chœur Butterfly à Tou
 								{% set desc = next.data.subtitle or '' %}
 								
 								<li class="bg-white/5 ring-1 ring-white/15 rounded-lg px-2 py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-									<!-- Date + lieu -->
 									<div class="flex items-start gap-2">
 										<div class="flex-shrink-0 text-center ring-1 ring-white/30 rounded-md px-2 py-2 leading-tight">
 											<div class="font-extrabold text-lg date-dd" data-start="{{ d.start }}"></div>
@@ -96,7 +96,6 @@ description: "Retrouvez toutes les dates des concerts du Chœur Butterfly à Tou
 										</div>
 									</div>
 									
-									<!-- Actions -->
 									<div class="flex items-center gap-2">
 										{% if d.tickets %}
 										<a href="{{ d.tickets }}" target="_blank" rel="noopener"
@@ -170,7 +169,6 @@ description: "Retrouvez toutes les dates des concerts du Chœur Butterfly à Tou
 	
 </section>
 
-<!-- Script : formatage dates + génération .ics -->
 <script>
 	(function(){
 		function fmtLong(startISO, endISO){

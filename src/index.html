@@ -12,7 +12,6 @@ description: "Le Chœur de chambre Butterfly réunit des chanteurs passionnés �
 </style>
 <!-- CAROUSEL -->
 <section class="reveal reveal-fade relative w-full h-[420px] md:h-[560px] lg:h-[620px] overflow-hidden">
-  <!-- Slides wrapper -->
   <div id="heroSlides" class="flex w-full h-full transition-transform duration-700 ease-in-out">
     <!-- Slide 1 -->
     <div class="slide relative w-full h-full flex-shrink-0">
@@ -73,7 +72,6 @@ description: "Le Chœur de chambre Butterfly réunit des chanteurs passionnés �
     </div>
   </div>
 
-  <!-- Flèche droite -->
   <button id="heroNext" class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 border border-white/40
                  backdrop-blur rounded-md p-2 md:p-3 text-white shadow focus:outline-none">
     <!-- icône chevron -->
@@ -83,7 +81,6 @@ description: "Le Chœur de chambre Butterfly réunit des chanteurs passionnés �
     </svg>
   </button>
 
-  <!-- Dots -->
   <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3">
     <button class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white/40 ring-1 ring-white/50"></button>
     <button class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white/40 ring-1 ring-white/50"></button>
@@ -91,7 +88,7 @@ description: "Le Chœur de chambre Butterfly réunit des chanteurs passionnés �
   </div>
 </section>
 
-<!-- SECTION 2 — Édito saison + CTA (mise en page comme le mock) -->
+<!-- SECTION 2 — Édito saison -->
 <section class="bg-whitish text-dark pt-8 pb-16">
   <div class="reveal reveal-up pres mx-auto px-4">
     <div class="relative md:shadow-[40px_40px_0px_0px_var(--color-secondary)]">
@@ -145,7 +142,6 @@ description: "Le Chœur de chambre Butterfly réunit des chanteurs passionnés �
           </p>
         </div>
 
-        <!-- CTA -->
         <div class="mt-6">
           <a href="/infos-pratiques/#recrutement"
             class="inline-flex items-center gap-2 bg-white hover:bg-secondary_hover text-primary font-semibold px-5 py-2 rounded shadow">
@@ -160,7 +156,7 @@ description: "Le Chœur de chambre Butterfly réunit des chanteurs passionnés �
   </div>
 </section>
 
-<!-- SECTION 3 — 3 photos de la galerie + bouton -->
+<!-- SECTION 3 -->
 {% set _fallback = ["/images/galerie/01.jpg","/images/galerie/02.jpg","/images/galerie/03.jpg"] %}
 {% set _photos = (gallery) %}
 

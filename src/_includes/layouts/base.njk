@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>{% if title %}{{ title }} – {% endif %}Chœur Butterfly</title>
+		<title>{% if title %}Chœur Butterfly - {{ title }}{% else %}Chœur Butterfly{% endif %}</title>
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="/assets/styles.css" />
@@ -138,8 +138,8 @@ document.addEventListener('DOMContentLoaded', function () {
 					<ul class="flex items-center gap-4">
 						<li><a class="hover:text-white" href="/mentions-legales/">Mentions légales</a></li>
 						<li><a class="hover:text-white" href="/politique-confidentialite/">Confidentialité</a></li>
-						<li><a class="hover:text-white" href="/infos-pratiques#contact">Contact</a></li>
-						<li><a class="hover:text-white" href="/infos-pratiques#contact">Accessibilité</a></li>
+						<li><a class="hover:text-white" href="/infos-pratiques/#contact">Contact</a></li>
+						<li><a class="hover:text-white" href="/infos-pratiques/#contact">Accessibilité</a></li>
 					</ul>
 				</div>
 			</div>

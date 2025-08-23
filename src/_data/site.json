@@ -1,5 +1,5 @@
 {
-  "name": "Chœur Butterfly",
+  "name": "Choeur Butterfly",
   "shortName": "Butterfly",
   "url": "https://choeur-butterfly.com",
   "language": "fr",
@@ -12,6 +12,6 @@
       "https://www.facebook.com/profile.php?id=61579272361631"
     ]
   },
-  "defaultDescription": "Chœur de chambre Butterfly à Toulouse : concerts, projets artistiques et actions culturelles.",
+  "defaultDescription": "Choeur de chambre Butterfly à Toulouse : concerts, projets artistiques et actions culturelles.",
   "defaultImage": "/images/og-default.jpg"
 }

@@ -28,11 +28,11 @@ title: "{{ title }}"
 	
 	
 	{# ===================== AFFICHE + INFOS ===================== #}
-	<section class="reveal reveal-fade text-white pb-0">
+	<section class="text-white pb-0">
 		<div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-start">
 			
 			{# Affiche à gauche #}
-			<div class="md:col-span-4">
+			<div class="reveal reveal-right md:col-span-4">
 				<div class="rounded-lg overflow-hidden ring-1 ring-white/15 shadow-lg">
 					<img
 					src="{{ poster | default(cover) | default('/images/concerts/placeholder-hero.jpg') }}"
@@ -44,7 +44,7 @@ title: "{{ title }}"
 			</div>
 			
 			{# Infos à droite : titre, sous-titre, description, dates #}
-			<div class="relative md:col-span-8">
+			<div class="reveal reveal-left relative md:col-span-8">
 				{% if chapeau %}
 				<div class="z-20 shadow-2xl relative bg-accent ring-2 ring-white/15 mx-auto px-6 py-6 md:px-6 md:py-6 md:w-[90%]">
 				<p class="italic md:text-base text-white/80 font-bold text-center">{{ chapeau }}</p>
@@ -93,7 +93,7 @@ title: "{{ title }}"
 	
 	
 	{# ===================== NOTE DE PROGRAMME ===================== #}
-	<section class="reaveal reveal-up text-white py-12">
+	<section class="reveal reveal-up text-white py-12">
 		<div class="max-w-6xl mx-auto px-4">
 			{{ Divider("Note de programme") }}
 			

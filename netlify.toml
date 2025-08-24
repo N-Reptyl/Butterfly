@@ -17,11 +17,6 @@
   status = 301
   force = true
 
-# Sitemap plugin (simple et fiable)
-[[plugins]]
-  package = "@netlify/plugin-sitemap"
-  enabled = false
-
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]

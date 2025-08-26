@@ -28,6 +28,18 @@
 <link rel="alternate" href="{{ pageUrl }}" hreflang="fr-FR">
 <meta name="robots" content="index,follow">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://choeur-butterfly.com/#website",
+  "url": "https://choeur-butterfly.com/",
+  "name": "Chœur Butterfly",
+  "alternateName": ["Choeur Butterfly", "Chœur de chambre Butterfly"],
+  "inLanguage": "fr-FR"
+}
+</script>
+
 {# Données structurées Organisation (PerformingGroup) #}
 <script type="application/ld+json">
 {
@@ -37,6 +49,7 @@
   "alternateName": ["Choeur Butterfly", "Chœur de chambre Butterfly"],
   "url": "{{ site.url }}",
   "logo": "{{ site.url }}{{ site.org.logo }}",
-  "sameAs": {{ site.org.sameAs | dump | safe }}
+  "sameAs": {{ site.org.sameAs | dump | safe }},
+  "inLanguage": "fr-FR"
 }
 </script>

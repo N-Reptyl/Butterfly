@@ -1,6 +1,6 @@
 ---
 name: "Adrien Accard"
-voice: "Basse"
+voice: "Ténor"
 photo: "/images/choristes/adrien.jpg"
-order: 9
+order: 10
 ---

@@ -1,6 +1,6 @@
 ---
-name: "Véronika Kompanets"
+name: "Veronika Kompanets"
 voice: "Alto"
-photo: "/images/choristes/veronika.jpg"
+photo: "/images/choristes/nopp.jpg"
 order: 7
 ---

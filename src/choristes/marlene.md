@@ -1,6 +1,6 @@
 ---
 name: "Marlène Gaston-Epiter"
-voice: "Soprano"
+voice: "Alto"
 photo: "/images/choristes/marlene.jpg"
-order: 4
+order: 5
 ---

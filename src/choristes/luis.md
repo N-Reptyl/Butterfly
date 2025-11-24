@@ -1,6 +1,6 @@
 ---
 name: "Luis De Franca"
 voice: "Basse"
-photo: "/images/choristes/nopp.jpg"
+photo: "/images/choristes/luis.jpg"
 order: 14
 ---

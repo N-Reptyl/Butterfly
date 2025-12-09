@@ -12,11 +12,11 @@ Enfin, l’atmosphère se fait plus intime avec Die schöne Müllerin et Winterr
 Ce concert se déploie comme une traversée : de la clarté à la nuit, de la joie partagée à la confession intime.
 Une soirée pour rencontrer Schubert dans toute la richesse de son expression."
 dates:
-  - start: "2026-01-11T20:00"
-    end: "2026-01-11T21:00"
+  - start: "2026-01-11T20:30"
+    end: "2026-01-11T21:30"
     venue: "Salle Georges Cuvier"
     city: "Toulouse" 
-    tickets: "https://www.helloasso.com/associations/familia-production/evenements/a-travers-schubert-butterfly/widget"
+    tickets: "https://www.helloasso.com/associations/familia-production/evenements/a-travers-schubert-butterfly"
   - start: "2026-02-01T20:00"
     end: "2026-02-01T21:00"
     venue: "Espace Allegria"

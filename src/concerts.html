@@ -64,9 +64,20 @@ eleventyImport:
 					<span class="pointer-events-none absolute -bottom-2 -left-2 h-20 w-[3px] bg-white"></span>
 					
 					<div class="bg-accent ring-1 ring-white/20 px-6 py-6 md:px-7 md:py-7 shadow-lg">
-						<h3 class="text-2xl md:text-3xl font-extrabold mb-1">{{ next.data.title }}</h3>
+						<h3 class="text-2xl md:text-3xl font-extrabold">{{ next.data.title }}</h3>
 						{% if next.data.subtitle %}<p class="text-l italic text-white/50 mb-5">{{ next.data.subtitle  | safe }}</p>{% endif %}
-						{% if next.data.description %}<p class="text-white/80 mb-4">{{ next.data.description  | safe }}</p>{% endif %}
+						{% if next.data.description %}<p class="text-white/80 mb-4">
+							<div class="description-wrapper overflow-hidden max-h-20 relative transition-all duration-500">
+								{% if next.data.description %}
+									<p class="leading-relaxed">{{ next.data.description | safe }}</p>
+								{% endif %}
+							</div>
+
+							<button class="toggle-description mt-2 text-sm underline text-white/70 hover:text-white transition hidden">
+								Voir plus
+							</button>
+
+						</p>{% endif %}
 						{% if next.data.excerpt %}
 						<p class="leading-relaxed mb-6">{{ next.data.excerpt }}</p>
 						{% else %}
@@ -178,6 +189,38 @@ eleventyImport:
 	</section>
 	
 </section>
+
+<script>
+(function() {
+    document.querySelectorAll(".description-wrapper").forEach((wrapper, i) => {
+        
+        const btn = wrapper.parentElement.querySelector(".toggle-description");
+
+        // Vérifie si le contenu déborde
+        if (wrapper.scrollHeight <= wrapper.clientHeight) {
+            return; // rien à faire, pas de bouton
+        }
+
+        // Le texte déborde → afficher le bouton
+        btn.classList.remove("hidden");
+
+        let expanded = false;
+
+        btn.addEventListener("click", () => {
+            expanded = !expanded;
+
+            if (expanded) {
+                wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+                btn.textContent = "Voir moins";
+            } else {
+                wrapper.style.maxHeight = "5rem"; // correspond à max-h-20
+                btn.textContent = "Voir plus";
+            }
+        });
+    });
+})();
+</script>
+
 
 <script>
 	(function(){

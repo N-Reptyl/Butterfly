@@ -5,11 +5,10 @@ description: "Découvrez Nathan Gardes, chef du Chœur Butterfly, et sa vision m
 image: /images/chef.jpg
 ---
 <!-- SECTION CHEF -->
-<section class="bg-hero-gradient text-white pb-12">
-	<div class="mx-auto">
-		<section class="relative">
+<section class="bg-hero-gradient text-white py-10 px-4">
+	<div class="max-w-6xl mt-10 mx-auto">
 		<!-- Titre -->
-		<div class=" pt-20 reveal reveal-right delay-2000 flex justify-center bg-[url(/images/fond2.png)] bg-bottom bg-cover bg-no-repeat">
+		<div class="reveal reveal-right delay-2000 flex justify-center">
 			<div class="inline-flex flex-col items-center gap-2 mb-8">
 				<span class="h-[3px] w-full mt-3 bg-white/80"></span>
 				<h1 class="text-2xl md:text-3xl font-extrabold tracking-wide uppercase text-center px-8 py-1 bg-white/10 ring-1 ring-white/25">
@@ -18,18 +17,9 @@ image: /images/chef.jpg
 				<span class="h-[3px] w-full bg-white/80"></span>
 			</div>
 		</div>
-
-     <!-- Neige délimiteur -->
-    <div class="pointer-events-none select-none
-                absolute inset-x-0 bottom-0 translate-y-1/2">
-      <img src="/images/neige.png"
-          alt=""
-          class="w-full h-auto block">
-    </div>
-  </section>
 		
 		<!-- Grille -->
-		<div class="mt-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-center">
+		<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-center">
 			
 			<!-- Image -->
 			<figure class="md:col-start-1 md:col-span-7 md:row-start-1 relative">
@@ -67,30 +57,21 @@ image: /images/chef.jpg
 </section>
 
 <!-- NOS MUSICIENS ASSOCIÉS -->
-<section class="bg-whitish text-dark">
-  <div class="">
-<section class="relative">
+<section class="bg-whitish text-dark py-14">
+ <div class="max-w-6xl mx-auto px-4">
     <!-- Titre -->
-    <div class="reveal reveal-left flex justify-center bg-[url(/images/fond2.png)] pt-10 bg-bottom bg-cover bg-no-repeat">
+     <div class="reveal reveal-left flex justify-center">
       <div class="inline-flex flex-col items-center gap-2 mb-8">
-        <span class="h-[3px] w-full bg-white/80"></span>
-        <h2 class="text-light text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-8 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
+        <span class="h-[3px] w-full bg-dark/20"></span>
+        <h2 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-8 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
           Nos musiciens associés
         </h2>
-        <span class="h-[3px] w-full bg-white/80"></span>
+        <span class="h-[3px] w-full bg-dark/20"></span>
       </div>
     </div>
-     <!-- Neige délimiteur -->
-  <div class="pointer-events-none select-none
-              absolute inset-x-0 bottom-0 translate-y-1/2">
-    <img src="/images/neige.png"
-         alt=""
-         class="w-full h-auto block">
-  </div>
-  </section>
 
     <!-- Carousel -->
-    <div id="assocCarousel" class="relative max-w-6xl mx-auto py-10">
+    <div id="assocCarousel" class="relative">
       <div class="overflow-hidden rounded-lg ring-1 ring-black/5 bg-whitish">
         <div id="assocTrack" class="flex transition-transform duration-700 ease-in-out">
           {% for a in collections.associes %}

@@ -28,6 +28,9 @@ dates:
     city: "Pompignan"	
 city: "Toulouse"
 image: "/images/concerts/schubert/schubert.jpg"
+images: 
+  - "/images/concerts/schubert/schubert.jpg"
+  - "/images/concerts/schubert/11janvier.jpg"
 cta: { label: "Découvrir", url: "/concerts/schubert/" }
 layout: "layouts/concert.njk" 
 program_gallery_dir: "/images/concerts/schubert/programme"

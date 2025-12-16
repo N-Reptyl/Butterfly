@@ -2,11 +2,18 @@
 title: "Nos concerts & notre répertoire"
 layout: layouts/base.njk
 description: "Retrouvez toutes les dates des concerts du Chœur Butterfly à Toulouse et ailleurs. Programmation, lieux et réservations en un clic."
-image: /images/concerts/renaissance.jpg
+image: /images/concerts/11janvier.jpg
 eleventyImport:
   collections: ["concertsUpcoming", "concertsPast"]
 ---
-
+<style>
+	.carousel-img {
+  opacity: 0;
+}
+.carousel-img.is-active {
+  opacity: 1;
+}
+</style>
 <section class="bg-hero-gradient text-white pt-10">
 		<div class="mt-10 max-w-[85rem] mx-auto px-4">
 		<div class="reveal reveal-up flex justify-center">
@@ -37,13 +44,44 @@ eleventyImport:
 			<article class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 md:items-center">
 				<!-- Image -->
 				<figure class="md:col-span-4 relative">
-					<div class="reveal reveal-right relative overflow-hidden ring-1 ring-white/20 shadow-lg bg-white/5" style="padding-top: 141.4%;">
-						{% imagePublic next.data.image, next.data.title, { className: "absolute inset-0 w-full h-full object-cover" } %}
-					</div>
-					<!-- Filets décoratifs gauche -->
-					<span class="hidden md:block absolute -left-6 top-16 h-[60%] w-px bg-white/20"></span>
-					<span class="hidden md:block absolute -left-10 top-28 h-[38%] w-px bg-white/10"></span>
+				<div
+					class="reveal reveal-right relative overflow-hidden ring-1 ring-white/20 shadow-lg bg-white/5"
+					style="padding-top: 141.4%;"
+					data-carousel
+				>
+					{% for img in next.data.images %}
+					{% imagePublic img, next.data.title, {
+						className: "carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+					} %}
+					{% endfor %}
+				</div>
+
+				<!-- Flèche gauche -->
+				<button
+					class="carousel-prev absolute -left-6 top-1/2 -translate-y-1/2
+						bg-black/50 backdrop-blur text-white rounded-full p-2
+						transition disabled:opacity-30 disabled:cursor-not-allowed"
+					aria-label="Image précédente"
+					disabled
+				>
+					‹
+				</button>
+
+				<!-- Flèche droite -->
+				<button
+					class="carousel-next absolute -right-6 top-1/2 -translate-y-1/2
+						bg-black/50 backdrop-blur text-white rounded-full p-2
+						transition disabled:opacity-30 disabled:cursor-not-allowed"
+					aria-label="Image suivante"
+				>
+					›
+				</button>
+
+				<!-- Filets décoratifs -->
+				<span class="hidden md:block absolute -left-8 top-16 h-[60%] w-px bg-white/20"></span>
+				<span class="hidden md:block absolute -left-10 top-28 h-[38%] w-px bg-white/10"></span>
 				</figure>
+
 				
 				
 				
@@ -185,7 +223,7 @@ eleventyImport:
   "name": "À travers Schubert",
   "description": "Le Chœur Butterfly vous propose, en une soirée, de traverser les trois facettes essentielles de l'univers de Franz Schubert : la ferveur de sa musique sacrée, la convivialité des Schubertiades et l'émotion bouleversante de ses grands cycles du lied. Une traversée musicale de la clarté à la nuit, de la joie partagée à la confession intime.",
   "image": [
-    "https://www.choeur-butterfly.fr/images/concerts/schubert/schubert.jpg"
+    "https://www.choeur-butterfly.fr/images/concerts/schubert/11janvier.jpg"
   ],
   "genre": "Musique chorale classique",
   "inLanguage": "fr",
@@ -375,4 +413,39 @@ eleventyImport:
 			});
 		});
 	})();
+</script>
+
+<script>
+document.querySelectorAll('[data-carousel]').forEach(carousel => {
+  const images = carousel.querySelectorAll('.carousel-img');
+  const prev = carousel.parentElement.querySelector('.carousel-prev');
+  const next = carousel.parentElement.querySelector('.carousel-next');
+
+  let index = 0;
+
+  function update() {
+    images.forEach((img, i) => {
+      img.classList.toggle('is-active', i === index);
+    });
+
+    prev.disabled = index === 0;
+    next.disabled = index === images.length - 1;
+  }
+
+  prev.addEventListener('click', () => {
+    if (index > 0) {
+      index--;
+      update();
+    }
+  });
+
+  next.addEventListener('click', () => {
+    if (index < images.length - 1) {
+      index++;
+      update();
+    }
+  });
+
+  update();
+});
 </script>

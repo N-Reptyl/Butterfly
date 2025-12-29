@@ -26,6 +26,7 @@ dates:
     end: "2026-02-15T21:00"
     venue: "Château de Pompignan"
     city: "Pompignan"	
+    tickets: "https://www.helloasso.com/associations/familia-production/evenements/concert-a-travers-schubert-15-fevrier-2026"
 city: "Toulouse"
 image: "/images/concerts/schubert/schubert.jpg"
 images: 

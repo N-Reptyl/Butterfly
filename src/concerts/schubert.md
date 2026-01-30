@@ -22,16 +22,11 @@ dates:
     venue: "Espace Allegria"
     city: "Toulouse"
     tickets: "https://www.helloasso.com/associations/familia-production/evenements/concert-a-travers-schubert-01-fevrier-2026"	
-  - start: "2026-02-15T20:00"
-    end: "2026-02-15T21:00"
-    venue: "Château de Pompignan"
-    city: "Pompignan"	
-    tickets: "https://www.helloasso.com/associations/familia-production/evenements/concert-a-travers-schubert-15-fevrier-2026"
 city: "Toulouse"
 image: "/images/concerts/schubert/schubert.jpg"
 images: 
-  - "/images/concerts/schubert/schubert.jpg"
   - "/images/concerts/schubert/11janvier.jpg"
+  - "/images/concerts/schubert/01fevrier.jpg"
 cta: { label: "Découvrir", url: "/concerts/schubert/" }
 layout: "layouts/concert.njk" 
 program_gallery_dir: "/images/concerts/schubert/programme"

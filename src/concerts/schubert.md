@@ -1,11 +1,9 @@
 ---
 title: "A travers Schubert"
 subtitle: "Messe en sol majeur D167"
-genre: "Jazz choral avec piano"
-chapeau : "Plongez dans un voyage musical où le swing rencontre le sacré. Né en octobre 2024 de la rencontre entre 13 chanteurs passionnés et leur chef Nathan Gardes, l’ensemble vocal Butterfly explore pour cette saison l’univers foisonnant du jazz." 
-description: "Le Chœur Butterfly vous propose, en une soirée, de traverser les trois facettes essentielles de l'univers Schubert : la ferveur de sa musique sacrée, la convivialité des Schubertiades et l'émotion bouleversante de ses grands cycles du lied.
-<br><br>
-La première partie ouvre un chemin vers la lumière : prières, contrastes et élans célestes nous conduisent jusqu’à la lumineuse Messe no. 2 D.167, écrite dans les jeunes années du compositeur.
+genre: "Schubert"
+chapeau : "Le Chœur Butterfly vous propose, en une soirée, de traverser les trois facettes essentielles de l'univers Schubert : la ferveur de sa musique sacrée, la convivialité des Schubertiades et l'émotion bouleversante de ses grands cycles du lied." 
+description: "La première partie ouvre un chemin vers la lumière : prières, contrastes et élans célestes nous conduisent jusqu’à la lumineuse Messe no. 2 D.167, écrite dans les jeunes années du compositeur.
 Vient ensuite le charme des Schubertiades, ces soirées d’amitié où Schubert façonnait une musique simple, vivante, profondément humaine et amusante. 
 Enfin, l’atmosphère se fait plus intime avec Die schöne Müllerin et Winterreise, où se révèle un Schubert plus intérieur, marqué par l’amour, la perte et le pas obstiné du voyageur solitaire.
 <br><br>
@@ -23,7 +21,7 @@ dates:
     city: "Toulouse"
     tickets: "https://www.helloasso.com/associations/familia-production/evenements/concert-a-travers-schubert-01-fevrier-2026"	
 city: "Toulouse"
-image: "/images/concerts/schubert/schubert.jpg"
+cover: "/images/concerts/schubert/11janvier.jpg"
 images: 
   - "/images/concerts/schubert/11janvier.jpg"
   - "/images/concerts/schubert/01fevrier.jpg"

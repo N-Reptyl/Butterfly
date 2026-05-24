@@ -55,27 +55,35 @@ eleventyImport:
 					} %}
 					{% endfor %}
 				</div>
+				{% if next.data.images and (next.data.images | length) > 1 %}
+					<!-- Flèche gauche -->
+					<button
+						class="carousel-prev absolute -left-6 top-1/2 -translate-y-1/2
+							bg-black/50 backdrop-blur text-white rounded-full p-2
+							transition disabled:opacity-30 disabled:cursor-not-allowed"
+						aria-label="Image précédente"
+						disabled
+					>
+						‹
+					</button>
 
-				<!-- Flèche gauche -->
-				<button
-					class="carousel-prev absolute -left-6 top-1/2 -translate-y-1/2
-						bg-black/50 backdrop-blur text-white rounded-full p-2
-						transition disabled:opacity-30 disabled:cursor-not-allowed"
-					aria-label="Image précédente"
-					disabled
-				>
-					‹
-				</button>
-
-				<!-- Flèche droite -->
-				<button
-					class="carousel-next absolute -right-6 top-1/2 -translate-y-1/2
-						bg-black/50 backdrop-blur text-white rounded-full p-2
-						transition disabled:opacity-30 disabled:cursor-not-allowed"
-					aria-label="Image suivante"
-				>
-					›
-				</button>
+					<!-- Flèche droite -->
+					<button
+						class="carousel-next absolute -right-6 top-1/2 -translate-y-1/2
+							bg-black/50 backdrop-blur text-white rounded-full p-2
+							transition disabled:opacity-30 disabled:cursor-not-allowed"
+						aria-label="Image suivante"
+					>
+						›
+					</button>
+				{% else %}
+					<!-- Si une seule image, on l'affiche simplement -->
+					{% if next.data.images and (next.data.images | length) == 1 %}
+						{% imagePublic next.data.images[0], next.data.title, {
+							className: "absolute inset-0 w-full h-full object-cover"
+						} %}
+					{% endif %}
+				{% endif %}
 
 				<!-- Filets décoratifs -->
 				<span class="hidden md:block absolute -left-8 top-16 h-[60%] w-px bg-white/20"></span>

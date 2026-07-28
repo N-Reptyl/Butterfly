@@ -189,7 +189,8 @@ eleventyImport:
 		
 		{% set items = collections.concertsPast %}
 		{% set total = items | length %}
-		{% set firstRowCount = total % 3 %}
+		{% set totalOnRow = 4 %}
+		{% set firstRowCount = total % totalOnRow %}
 		
 		<div class="border-r-2 border-b-2 border-white">
 			{% if firstRowCount != 0 %}
@@ -207,15 +208,15 @@ eleventyImport:
 			{% for c in items %}
 			{% if loop.index0 >= firstRowCount %}
 			{% set rel = loop.index0 - firstRowCount %}
-			{% if rel % 3 == 0 %}
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-0">
+			{% if rel % totalOnRow == 0 %}
+			<div class="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-0">
 				{% endif %}
 				
 				<div class="border-t-2 border-l-2 border-white hover:border-white/80 transition">
 					{% include "components/concert-card.njk" %}
 				</div>
 				
-				{% if rel % 3 == 2 or loop.last %}
+				{% if rel % totalOnRow == totalOnRow - 1 or loop.last %}
 			</div>
 			{% endif %}
 			{% endif %}

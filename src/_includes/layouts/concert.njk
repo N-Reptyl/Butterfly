@@ -93,16 +93,17 @@ title: "{{ title }}"
 	
 	
 	{# ===================== NOTE DE PROGRAMME ===================== #}
+	
+			
+	{# Carrousel 5 pages #}
+	{% if program_gallery_dir %}
+	{% set program_gallery = program_gallery_dir | dirImages %}
+	{% endif %}
+			
+	{% if program_gallery and program_gallery | length %} 
 	<section class="reveal reveal-up text-white py-12">
 		<div class="max-w-6xl mx-auto px-4">
 			{{ Divider("Note de programme") }}
-			
-			{# Carrousel 5 pages #}
-			{% if program_gallery_dir %}
-			{% set program_gallery = program_gallery_dir | dirImages %}
-			{% endif %}
-			
-			{% if program_gallery and program_gallery | length %} 
 			<div class="mt-5 relative overflow-hidden">
 				<div class="overflow-hidden">
 					<div id="progTrack" class="flex gap-3 transition-transform duration-500 ease-out will-change-transform">

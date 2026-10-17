@@ -66,7 +66,7 @@ image: /images/choeur.jpg
     </div>
     <!-- Grille -->
    
-<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mx-10 gap-8">
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 mx-10 gap-8">
    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
     <style>
       .font-polaroid { font-family: "Caveat", ui-serif, system-ui; font-size: larger; }
@@ -75,7 +75,6 @@ image: /images/choeur.jpg
   {% for c in collections.choristes %}
 
     <div class="relative group">
-      {# --- carte polaroid --- #}
       <div class="z-40 bg-white rounded-sm shadow-lg ring-1 ring-black/10 relative
                   p-3 pb-12 w-full transition-transform duration-200 ease-out
                   {{ rot }} group-hover:-translate-y-1 group-hover:rotate-0">
@@ -87,7 +86,6 @@ image: /images/choeur.jpg
           {% endif %}
         </div>
 
-        {# --- légende en bas, “écrite” sur la marge — #}
         <div class="absolute bottom-3 left-0 right-0 px-3">
           <p class="text-center font-polaroid text-xl leading-none text-slate-900">
             {{ c.data.name }}

@@ -1,5 +1,6 @@
 ---
 name: "Manon Labadie"
+role: "Cheffe de chœur"
 image: "/images/associes/manon.jpg"
 ---
 

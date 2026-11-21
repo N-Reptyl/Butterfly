@@ -139,7 +139,7 @@ eleventyImport:
 											<div class="text-[10px] uppercase tracking-wide date-mm" data-start="{{ d.start }}"></div>
 										</div>
 										<div class="text-sm">
-											<div class="font-semibold date-full capitalize" data-start="{{ d.start }}" data-end="{{ d.end }}"></div>
+											<div class="font-semibold date-full capitalize" data-start="{{ d.start }}"></div>
 											<div class="opacity-90">{{ loc }}</div>
 											<a href="#"
 											class="text-white text-xs no-underline hover:text-white/80 add-ics"
@@ -353,12 +353,11 @@ eleventyImport:
 
 <script>
 	(function(){
-		function fmtLong(startISO, endISO){
-			const s = new Date(startISO), e = new Date(endISO);
+		function fmtLong(startISO){
+			const s = new Date(startISO);
 			const dl = s.toLocaleDateString('fr-FR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 			const sh = s.toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
-			const eh = e.toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
-			return dl + ' - ' + sh + '–' + eh;
+			return dl + ' - ' + sh;
 		}
 		document.querySelectorAll('.date-dd').forEach(el=>{
 			const d=new Date(el.dataset.start);
@@ -369,7 +368,7 @@ eleventyImport:
 			el.textContent = d.toLocaleDateString('fr-FR',{month:'short'}).toUpperCase();
 		});
 		document.querySelectorAll('.date-full').forEach(el=>{
-			el.textContent = fmtLong(el.dataset.start, el.dataset.end);
+			el.textContent = fmtLong(el.dataset.start);
 		});
 		
 		function toICSDate(d){

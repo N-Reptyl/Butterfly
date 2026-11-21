@@ -56,7 +56,7 @@ image: /images/chef.jpg
 	</div>
 </section>
 
-<!-- NOS MUSICIENS ASSOCIÉS -->
+<!-- NOS ARTISTES ASSOCIÉS -->
 <section class="bg-whitish text-dark py-14">
  <div class="max-w-6xl mx-auto px-4">
     <!-- Titre -->
@@ -64,7 +64,7 @@ image: /images/chef.jpg
       <div class="inline-flex flex-col items-center gap-2 mb-8">
         <span class="h-[3px] w-full bg-dark/20"></span>
         <h2 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-8 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
-          Nos musiciens associés
+          Nos artistes associés
         </h2>
         <span class="h-[3px] w-full bg-dark/20"></span>
       </div>
@@ -88,7 +88,8 @@ image: /images/chef.jpg
                   <span class="pointer-events-none absolute -bottom-2 -left-2 h-[4px] w-24 bg-[#418a7a]"></span>
                   <span class="pointer-events-none absolute -bottom-2 -left-2 h-24 w-[4px] bg-[#418a7a]"></span>
 
-                  <h3 class="text-2xl md:text-3xl font-extrabold mb-3">{{ a.data.name }}</h3>
+                  <h3 class="text-2xl md:text-3xl font-extrabold mb-1">{{ a.data.name }}</h3>
+                  <h4 class="text-xl md:text-l font-bold mb-3 color-blue">{{ a.data.role }}</h4>
                   <div class="reveal reveal-right prose prose-invert max-w-none text-[15.5px] leading-relaxed">
                     {{ a.templateContent | safe }}
                   </div>

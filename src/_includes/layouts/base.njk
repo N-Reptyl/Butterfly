@@ -47,15 +47,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-	<body class="text-white font-sans bg-cover bg-center">
+	<body class="christmas-theme text-white font-sans bg-cover bg-center">
 		{% include "../components/header.njk" %}
 		<main class="">
 			{{ content | safe }}
 		</main>
 		
-		<footer class="relative bg-primary text-white">
+		<footer class="site-footer relative bg-primary text-white">
 			<!-- Watermark -->
-			<div class="pointer-events-none absolute inset-0 opacity-[0.06]">
+			<div class="site-footer__watermark pointer-events-none absolute inset-0 opacity-[0.06]">
 			</div>
 			
 			<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			</div>
 			
 			<!-- Bandeau bas -->
-			<div class="relative border-t border-white/10">
+			<div class="site-footer__bottom relative border-t border-white/10">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/70">
 					<p>© 2025 Chœur Butterfly — Tous droits réservés.</p>
 					<ul class="flex items-center gap-4">

@@ -1,0 +1,147 @@
+
+.christmas-theme {
+  /* Deep burgundy, used for small secondary accents only */
+  --xmas-burgundy: #7a2331;
+  --xmas-burgundy-soft: #9a4652; /* readable on dark green */
+  --xmas-snow: #ffffff;
+
+  /* Snow edge with an irregular lower contour (repeats horizontally) */
+  --xmas-snow-edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath fill='%23ffffff' d='M0 0H120V3C110 3 108 6 100 6C92 6 90 3.5 80 3.5C72 3.5 70 7 60 7C50 7 49 4 40 4C32 4 30 6 22 6C14 6 12 3 0 3Z'/%3E%3C/svg%3E");
+
+  /* Small Santa hat: burgundy body, cream brim and pom-pom */
+  --xmas-hat: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 20'%3E%3Cpath fill='%237a2331' d='M4 15C5 9 9 3.5 15 3C18 2.8 20.5 5 21 8C19.5 6.5 17.5 6.2 16 7.5C17.5 10 18.5 12.5 19 15Z'/%3E%3Cpath fill='%23000' fill-opacity='.18' d='M15 3C18 2.8 20.5 5 21 8C19.5 6.5 17.5 6.2 16 7.5C17.5 10 18.5 12.5 19 15H15.5C15.5 11 15.2 7 15 3Z'/%3E%3Ccircle cx='21' cy='8.2' r='2.4' fill='%23fffff6' stroke='%23cfcab8' stroke-width='.5'/%3E%3Crect x='2' y='13.6' width='19.5' height='4.6' rx='2.3' fill='%23fffff6' stroke='%23cfcab8' stroke-width='.5'/%3E%3C/svg%3E");
+
+  /* Fine six-branch snowflake (footer ornament) */
+  --xmas-flake: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fffff6' stroke-opacity='.8' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10M9.5 3.8 12 6l2.5-2.2M9.5 20.2 12 18l2.5 2.2M4 10.3l3.3.8-1-3.2M20 13.7l-3.3-.8 1 3.2M4 13.7l3.3-.8-1 3.2M20 10.3l-3.3.8 1-3.2'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   Header: thin layer of settled snow along the lower edge
+   -------------------------------------------------------------------------- */
+.christmas-theme #siteHeader::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 5px;
+  background: var(--xmas-snow-edge) repeat-x 0 0 / 120px 100%;
+  filter: drop-shadow(0 1px 1px rgb(24 56 49 / 0.18));
+  pointer-events: none;
+}
+
+/* Over the home-page hero (transparent header): lighter, more discreet */
+.christmas-theme #siteHeader.header--transparent::after {
+  opacity: 0.55;
+  filter: none;
+}
+
+/* Nav indicator dot: a small burgundy "berry" on the solid header */
+.christmas-theme .header--solid .nav-indicator {
+  background-color: var(--xmas-burgundy);
+}
+
+/* --------------------------------------------------------------------------
+   Logo: small Santa hat on the top-left corner (header only)
+   -------------------------------------------------------------------------- */
+.christmas-theme .site-logo {
+  position: relative;
+}
+
+.christmas-theme .site-logo::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: -14px;
+  width: 21px;
+  height: 17.5px;
+  background: var(--xmas-hat) no-repeat center / contain;
+  transform: rotate(-20deg) scaleX(-1);
+  transform-origin: 50% 100%;
+  filter: drop-shadow(0 1px 0.5px rgb(24 56 49 / 0.2));
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Footer: snow cap, light flakes, burgundy details
+   -------------------------------------------------------------------------- */
+
+/* Snow lying on the top edge of the footer */
+.christmas-theme .site-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 9px;
+  background: var(--xmas-snow-edge) repeat-x 0 0 / 160px 100%;
+  filter: drop-shadow(0 1px 1px rgb(11 29 59 / 0.25));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* The (empty) watermark layer turns into a very faint snowfall */
+.christmas-theme .site-footer__watermark {
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at 18px 24px, rgb(255 255 246 / 0.10) 1.5px, transparent 2px),
+    radial-gradient(circle at 74px 62px, rgb(255 255 246 / 0.07) 1px, transparent 1.5px),
+    radial-gradient(circle at 120px 14px, rgb(255 255 246 / 0.08) 2px, transparent 2.5px),
+    radial-gradient(circle at 46px 98px, rgb(255 255 246 / 0.06) 1px, transparent 1.5px);
+  background-size: 140px 120px, 110px 90px, 170px 150px, 90px 130px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+          mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+}
+
+/* Short burgundy line under the column headings */
+.christmas-theme .site-footer h3::after {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  margin-top: 0.5rem;
+  border-radius: 1px;
+  background-color: var(--xmas-burgundy-soft);
+}
+
+/* Bottom band separator: fine line with a centered snowflake */
+.christmas-theme .site-footer__bottom {
+  border-top-color: transparent;
+}
+
+.christmas-theme .site-footer__bottom::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.14) 20%,
+    var(--xmas-burgundy-soft) 50%,
+    rgb(255 255 255 / 0.14) 80%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.christmas-theme .site-footer__bottom::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -7px;
+  width: 34px;
+  height: 13px;
+  transform: translateX(-50%);
+  background: var(--color-primary) var(--xmas-flake) no-repeat center / 13px 13px;
+  pointer-events: none;
+}
+
+.christmas-theme .soutenir {
+    background-color: var(--xmas-burgundy);
+}
+.christmas-theme .soutenir:hover {
+    background-color: var(--xmas-burgundy-soft);
+}

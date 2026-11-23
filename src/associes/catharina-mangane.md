@@ -1,5 +1,6 @@
 ---
 name: "Catharina Mangane"
+role: "Soprano soliste"
 image: "/images/associes/catharina.jpg"
 ---
 

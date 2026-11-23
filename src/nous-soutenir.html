@@ -3,15 +3,10 @@ title: Nous soutenir
 layout: layouts/base.njk
 description: "Soutenez le Chœur de chambre Butterfly et participez à la vitalité du chant choral à Toulouse grâce à vos dons déductibles d’impôts."
 ---
+{% from "components/decorative-title.njk" import decorativeTitle %}
 <section class="bg-whitish text-dark pt-14">
 <div class="reveal reveal-down flex mt-10 justify-center">
-    <div class="inline-flex flex-col items-center gap-2 mb-8">
-      <span class="h-[3px] w-full bg-dark/20"></span>
-      <h1 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-8 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
-        Nous soutenir
-      </h1>
-      <span class="h-[3px] w-full bg-dark/20"></span>
-    </div>
+  {{ decorativeTitle("Nous soutenir", "whitish", "h1") }}
   </div>
 <div class="bg-whitish reveal reveal-up px-10 mx-auto">
 <iframe onload="window.addEventListener(

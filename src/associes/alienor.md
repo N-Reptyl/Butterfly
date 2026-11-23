@@ -1,5 +1,6 @@
 ---
 name: "Aliénor Jalliffier-Verne"
+role: "Pianiste accompagnateur"
 image: "/images/associes/alienor.jpg"
 ---
 

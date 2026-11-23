@@ -6,6 +6,7 @@ image: /images/concerts/11janvier.jpg
 eleventyImport:
   collections: ["concertsUpcoming", "concertsPast"]
 ---
+{% from "components/decorative-title.njk" import decorativeTitle %}
 <style>
 	.carousel-img {
   opacity: 0;
@@ -17,13 +18,7 @@ eleventyImport:
 <section class="bg-hero-gradient text-white pt-10">
 		<div class="mt-10 max-w-[85rem] mx-auto px-4">
 		<div class="reveal reveal-up flex justify-center">
-			<div class="inline-flex flex-col items-center gap-2">
-				<span class="h-[3px] mt-3 w-full bg-white/80"></span>
-				<h1 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-8 py-1 bg-white/10 ring-1 ring-white/25">
-					Nos concerts
-				</h1>
-				<span class="h-[3px] w-full bg-white/80"></span>
-			</div>
+			{{ decorativeTitle("Nos concerts", "hero-gradient", "h1", "", "mt-3") }}
 		</div>
 		<p class="reveal reveal-up font-roboto text-center text-white/90 mt-4 mb-4">Découvrez nos concerts passés et à venir ci-dessous&nbsp;!</p>
 		

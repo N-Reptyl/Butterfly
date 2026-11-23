@@ -1,5 +1,6 @@
 ---
 name: "David Saint-Pastou"
+role: "Baryton soliste"
 image: "/images/associes/david.jpg"
 ---
 

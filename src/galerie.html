@@ -5,17 +5,13 @@ description: "Explorez la galerie photo du Chœur Butterfly : instants capturés
 image: /images/galerie/004.jpg
 ---
 
+{% from "components/decorative-title.njk" import decorativeTitle %}
+
 <!-- GALERIE -->
 <section class="bg-whitish text-dark pt-14">
   <!-- Titre -->
-<div class="reveal reveal-down flex mt-10 justify-center">
-      <div class="inline-flex flex-col items-center gap-2 mb-8">
-       <span class="h-[3px] w-full bg-dark/20"></span>
-      <h1 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-8 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
-        Le chœur en images
-      </h1>
-       <span class="h-[3px] w-full bg-dark/20"></span>
-    </div>
+<div class="reveal reveal-down flex mt-10 justify-center max-w-[85rem] mx-auto">
+  {{ decorativeTitle("Le chœur en images", "whitish", "h1") }}
   </div>
 
   <!-- Grille -->
@@ -65,8 +61,11 @@ image: /images/galerie/004.jpg
 
 <script>
   (function(){
-    const items = {{ gallery | dump | safe }}; // [{src, alt, num}, ...]
     const buttons = Array.from(document.querySelectorAll('#galleryGrid > button'));
+    const items = buttons.map(button => {
+      const thumbnail = button.querySelector('img');
+      return { src: thumbnail.src, alt: thumbnail.alt || '' };
+    });
     const overlay = document.getElementById('lightbox');
     const img = document.getElementById('lbImg');
     const caption = document.getElementById('lbCaption');

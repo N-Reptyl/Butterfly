@@ -1,5 +1,6 @@
 ---
 name: "Clairy Minko"
+role: "Ténor soliste"
 image: "/images/associes/clairy.jpg"
 ---
 

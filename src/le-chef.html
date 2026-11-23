@@ -4,18 +4,13 @@ layout: layouts/base.njk
 description: "Découvrez Nathan Gardes, chef du Chœur Butterfly, et sa vision musicale qui allie exigence, inspiration et passion du chant choral."
 image: /images/chef.jpg
 ---
+{% from "components/decorative-title.njk" import decorativeTitle %}
 <!-- SECTION CHEF -->
 <section class="bg-hero-gradient text-white py-10 px-4">
 	<div class="max-w-6xl mt-10 mx-auto">
 		<!-- Titre -->
 		<div class="reveal reveal-right delay-2000 flex justify-center">
-			<div class="inline-flex flex-col items-center gap-2 mb-8">
-				<span class="h-[3px] w-full mt-3 bg-white/80"></span>
-				<h1 class="text-2xl md:text-3xl font-extrabold tracking-wide uppercase text-center px-8 py-1 bg-white/10 ring-1 ring-white/25">
-					Notre directeur artistique
-				</h1>
-				<span class="h-[3px] w-full bg-white/80"></span>
-			</div>
+			{{ decorativeTitle("Notre directeur artistique", "hero-gradient", "h1", "mb-8", "mt-3") }}
 		</div>
 		
 		<!-- Grille -->
@@ -61,13 +56,7 @@ image: /images/chef.jpg
  <div class="max-w-6xl mx-auto px-4">
     <!-- Titre -->
      <div class="reveal reveal-left flex justify-center">
-      <div class="inline-flex flex-col items-center gap-2 mb-8">
-        <span class="h-[3px] w-full bg-dark/20"></span>
-        <h2 class="text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-center px-8 py-1 bg-[#418a7a]/20 ring-1 ring-[#418a7a]/25">
-          Nos artistes associés
-        </h2>
-        <span class="h-[3px] w-full bg-dark/20"></span>
-      </div>
+      {{ decorativeTitle("Nos artistes associés", "whitish", "h1") }}
     </div>
 
     <!-- Carousel -->

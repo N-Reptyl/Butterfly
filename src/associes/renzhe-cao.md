@@ -1,5 +1,6 @@
 ---
 name: "Renzhe Cao"
+role: "Pianiste accompagnateur"
 image: "/images/associes/renzhe.jpg"
 ---
 

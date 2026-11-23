@@ -8,6 +8,7 @@
   --color-accent: theme('colors.accent');
   --color-primary-hover: theme('colors.primary_hover');
   --color-secondary-hover: theme('colors.secondary_hover');
+  --color-third: theme('colors.third');
 }
 
 @layer utilities {

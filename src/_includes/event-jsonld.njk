@@ -1,37 +1,55 @@
-{# A inclure dans une page concert après avoir défini : 
-   startDate (ISO, ex: 2025-11-23T20:30:00+01:00), endDate (optionnel),
-   locationName, streetAddress, addressLocality, postalCode, image (ou défaut)
-#}
 {% set site = site or {} %}
-{% set siteUrl = site.url or "" %}
-{% set desc = description or site.defaultDescription %}
-{% set img = image or site.defaultImage %}
+{% set eventImage = eventSchema.cover or (eventSchema.images[0] if eventSchema.images else site.defaultImage) %}
+{% set eventDescription = eventSchema.description or eventSchema.excerpt or site.defaultDescription %}
+{% set eventDates = eventSchema.dates or [] %}
+{% if eventSchemaUpcomingOnly %}
+{% set eventDates = eventDates | upcomingEventDates %}
+{% endif %}
+{% if eventDates | length %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MusicEvent",
-  "name": "{{ title }}",
-  "startDate": "{{ startDate }}"{% if endDate %},
-  "endDate": "{{ endDate }}"{% endif %},
-  "eventStatus": "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "location": {
-    "@type": "Place",
-    "name": "{{ locationName }}",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "{{ streetAddress }}",
-      "addressLocality": "{{ addressLocality }}",
-      "postalCode": "{{ postalCode }}",
-      "addressCountry": "FR"
+  "@graph": [
+    {% for d in eventDates %}
+    {
+      "@type": "MusicEvent",
+      "@id": {{ (site.url ~ eventSchemaUrl ~ "#event-" ~ loop.index) | dump | safe }},
+      "url": {{ (site.url ~ eventSchemaUrl) | dump | safe }},
+      "name": {{ eventSchema.title | dump | safe }},
+      "description": {{ eventDescription | striptags | dump | safe }},
+      "image": [{{ (site.url ~ eventImage) | dump | safe }}],
+      {% if eventSchema.genre %}"genre": {{ eventSchema.genre | dump | safe }},{% endif %}
+      "inLanguage": "fr-FR",
+      "startDate": {{ d.start | eventDateISO | dump | safe }},
+      {% if d.end %}"endDate": {{ d.end | eventDateISO | dump | safe }},{% endif %}
+      "eventStatus": {{ d.start | eventStatus | dump | safe }},
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": {{ d.venue | dump | safe }},
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": {{ (d.city or eventSchema.city or "") | dump | safe }},
+          "addressCountry": "FR"
+        }
+      },
+      "organizer": {
+        "@type": "PerformingGroup",
+        "name": {{ site.name | dump | safe }},
+        "url": {{ site.url | dump | safe }}
+      },
+      "performer": {
+        "@type": "PerformingGroup",
+        "name": {{ site.name | dump | safe }}
+      }{% if d.tickets %},
+      "offers": {
+        "@type": "Offer",
+        "url": {{ d.tickets | dump | safe }}
+      }{% endif %}
     }
-  },
-  "image": ["{{ siteUrl }}{{ img }}"],
-  "description": "{{ desc | striptags | replace('"','\"') }}",
-  "organizer": {
-    "@type": "PerformingGroup",
-    "name": "{{ site.name }}",
-    "url": "{{ siteUrl }}"
-  }
+    {% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
 }
 </script>
+{% endif %}

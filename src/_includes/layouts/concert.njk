@@ -3,6 +3,19 @@ layout: layouts/base.njk
 title: "{{ title }}"
 ---
 
+{% set eventSchema = {
+	"title": title,
+	"description": description,
+	"excerpt": excerpt,
+	"genre": genre,
+	"dates": dates,
+	"city": city,
+	"cover": cover,
+	"images": images
+} %}
+{% set eventSchemaUrl = page.url %}
+{% include "../event-jsonld.njk" %}
+
 <div class="bg-hero-gradient">
 	
 	{# ===================== HERO ===================== #}

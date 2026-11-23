@@ -98,6 +98,26 @@ module.exports = function (eleventyConfig) {
 		if (!dt.isValid) return "";
 		return dt.setLocale(locale).toFormat(format);
 	});
+
+	eleventyConfig.addFilter("eventDateISO", value => {
+		const date = DateTime.fromISO(value, { zone: "Europe/Paris" });
+		return date.isValid ? date.toISO({ suppressMilliseconds: true }) : value;
+	});
+
+	eleventyConfig.addFilter("eventStatus", value => {
+		const date = DateTime.fromISO(value, { zone: "Europe/Paris" });
+		return date.isValid && date.toMillis() < DateTime.now().setZone("Europe/Paris").toMillis()
+		? "https://schema.org/EventCompleted"
+		: "https://schema.org/EventScheduled";
+	});
+
+	eleventyConfig.addFilter("upcomingEventDates", dates => {
+		const now = DateTime.now().setZone("Europe/Paris").toMillis();
+		return (dates || [])
+		.filter(event => DateTime.fromISO(event.start, { zone: "Europe/Paris" }).toMillis() >= now)
+		.sort((a, b) => DateTime.fromISO(a.start, { zone: "Europe/Paris" }).toMillis()
+		- DateTime.fromISO(b.start, { zone: "Europe/Paris" }).toMillis());
+	});
 	
 	//Toutes les images d'un dossier
 	eleventyConfig.addFilter("dirImages", (publicDir) => {
